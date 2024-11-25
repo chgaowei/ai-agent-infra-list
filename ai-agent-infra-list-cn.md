@@ -37,6 +37,195 @@ github 地址：[https://github.com/chgaowei/AgentConnect](https://github.com/ch
 整体的分类结构上，我会按照框架、规划、记忆、工具分为四大类，每个大类下再根据不同的维度细分。分类未必合理，后面可能会做些调整。
 
 
+<style>
+.project-map {
+    font-family: Arial, sans-serif;
+    margin: 20px 0;
+}
+.category {
+    border: 2px solid #3498db;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+.category-title {
+    font-weight: bold;
+    color: #2980b9;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+.subcategory {
+    border: 1px solid #95a5a6;
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 3px;
+}
+.subcategory-title {
+    font-weight: bold;
+    color: #7f8c8d;
+    margin-bottom: 8px;
+}
+.project-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.project-link {
+    background: #f0f0f0;
+    padding: 4px 8px;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #34495e;
+}
+.project-link:hover {
+    background: #e0e0e0;
+}
+</style>
+
+<div class="project-map">
+    <!-- 框架类别 -->
+    <div class="category">
+        <div class="category-title">框架</div>
+        
+        <div class="subcategory">
+            <div class="subcategory-title">一站式平台</div>
+            <div class="project-list">
+                <a href="https://github.com/langgenius/dify" class="project-link">dify</a>
+                <a href="https://github.com/Significant-Gravitas/AutoGPT" class="project-link">AutoGpt</a>
+                <a href="https://github.com/labring/FastGPT" class="project-link">fastgpt</a>
+                <a href="https://github.com/dataelement/bisheng" class="project-link">BISHENG</a>
+            </div>
+        </div>
+
+        <div class="subcategory">
+            <div class="subcategory-title">开发框架</div>
+            <div class="project-list">
+                <a href="https://github.com/langchain-ai/langchain" class="project-link">langchain</a>
+                <a href="https://github.com/run-llama/llama_index" class="project-link">llama_index</a>
+                <a href="https://github.com/microsoft/semantic-kernel" class="project-link">semantic-kernel</a>
+                <a href="https://github.com/langchain-ai/langgraph" class="project-link">LangGraph</a>
+                <a href="https://github.com/phidatahq/phidata" class="project-link">phidata</a>
+                <a href="https://github.com/deepset-ai/haystack" class="project-link">haystack</a>
+            </div>
+        </div>
+
+        <div class="subcategory">
+            <div class="subcategory-title">多智能体框架</div>
+            <div class="project-list">
+                <a href="https://github.com/crewAIInc/crewAI" class="project-link">crewai</a>
+                <a href="https://github.com/microsoft/autogen" class="project-link">Autogen</a>
+                <a href="https://github.com/camel-ai/camel" class="project-link">Camel</a>
+                <a href="https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one" class="project-link">Magentic-One</a>
+                <a href="https://github.com/geekan/MetaGPT" class="project-link">MetaGPT</a>
+            </div>
+        </div>
+
+        <div class="subcategory">
+            <div class="subcategory-title">构建工具</div>
+            <div class="project-list">
+                <a href="https://github.com/AgentOps-AI/agentops" class="project-link">AgentOps</a>
+                <a href="https://github.com/AgentOps-AI/AgentStack" class="project-link">AgentStack</a>
+                <a href="https://github.com/stanfordnlp/dspy" class="project-link">dspy</a>
+                <a href="https://github.com/Arize-ai/phoenix" class="project-link">phoenix</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 规划类别 -->
+    <div class="category">
+        <div class="category-title">规划</div>
+        
+        <div class="subcategory">
+            <div class="subcategory-title">工作流编排</div>
+            <div class="project-list">
+                <a href="https://github.com/inngest/inngest" class="project-link">inngest</a>
+                <a href="https://github.com/PrefectHQ/prefect" class="project-link">prefect</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 记忆类别 -->
+    <div class="category">
+        <div class="category-title">记忆</div>
+        
+        <div class="subcategory">
+            <div class="subcategory-title">记忆引擎</div>
+            <div class="project-list">
+                <a href="https://github.com/mem0ai/mem0" class="project-link">mem0</a>
+                <a href="https://github.com/eosphoros-ai/DB-GPT" class="project-link">DB-GPT</a>
+                <a href="https://github.com/letta-ai/letta" class="project-link">Letta</a>
+                <a href="https://github.com/infiniflow/ragflow" class="project-link">RAGFlow</a>
+                <a href="https://github.com/topoteretes/cognee" class="project-link">Cognee</a>
+                <a href="https://github.com/whyhow-ai/knowledge-table" class="project-link">KnowledgeTable</a>
+            </div>
+        </div>
+
+        <div class="subcategory">
+            <div class="subcategory-title">GraphRAG技术</div>
+            <div class="project-list">
+                <a href="https://github.com/microsoft/graphrag" class="project-link">graphrag</a>
+                <a href="https://github.com/circlemind-ai/fast-graphrag" class="project-link">fast-graphrag</a>
+                <a href="https://github.com/HKUDS/LightRAG" class="project-link">LightRAG</a>
+                <a href="https://github.com/gusye1234/nano-graphrag" class="project-link">nano-graphrag</a>
+            </div>
+        </div>
+
+        <div class="subcategory">
+            <div class="subcategory-title">存储</div>
+            <div class="project-list">
+                <a href="https://github.com/milvus-io/milvus" class="project-link">Milvus</a>
+                <a href="https://github.com/weaviate/weaviate" class="project-link">Weaviate</a>
+                <a href="https://github.com/chroma-core/chroma" class="project-link">Chroma</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 工具类别 -->
+    <div class="category">
+        <div class="category-title">工具</div>
+        
+        <div class="subcategory">
+            <div class="subcategory-title">智能体网络与通信</div>
+            <div class="project-list">
+                <a href="https://github.com/chgaowei/AgentConnect" class="project-link">AgentConnect</a>
+                <a href="https://github.com/chgaowei/AgentNetworkProtocol" class="project-link">AgentNetworkProtocol</a>
+                <a href="https://github.com/agora-protocol/paper-demo" class="project-link">Agora Protocol</a>
+                <a href="https://github.com/AI-Engineer-Foundation/agent-protocol" class="project-link">agent-protocol</a>
+                <a href="https://github.com/NapthaAI/naptha-sdk" class="project-link">naptha-sdk</a>
+            </div>
+        </div>
+
+        <div class="subcategory">
+            <div class="subcategory-title">computer use API</div>
+            <div class="project-list">
+                <a href="https://github.com/npi-ai/npi" class="project-link">npi</a>
+            </div>
+        </div>
+
+        <div class="subcategory">
+            <div class="subcategory-title">身份验证</div>
+            <div class="project-list">
+                <a href="https://github.com/chgaowei/AgentConnect" class="project-link">AgentConnect</a>
+            </div>
+        </div>
+
+        <div class="subcategory">
+            <div class="subcategory-title">运行时</div>
+            <div class="project-list">
+                <a href="https://github.com/e2b-dev/E2B" class="project-link">E2B</a>
+            </div>
+        </div>
+
+        <div class="subcategory">
+            <div class="subcategory-title">网页浏览</div>
+            <div class="project-list">
+                <a href="https://github.com/apify/crawlee" class="project-link">Crawlee</a>
+                <a href="https://github.com/browserless/browserless" class="project-link">Browserless</a>
+                <a href="https://github.com/tinyfish-io/agentql" class="project-link">AgentQL</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 # 框架
 
