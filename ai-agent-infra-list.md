@@ -36,40 +36,34 @@ Technical overview: [https://github.com/chgaowei/AgentNetworkProtocol/blob/main/
 
 For the overall classification structure, I will divide it into four main categories: frameworks, planning, memory, and tools, with each category further subdivided based on different dimensions. The classification may not be perfect and might be adjusted later.
 
------------------------- Frameworks-----------------------
+- Frameworks
+  - One-Stop Platforms: [dify](https://github.com/langgenius/dify)    [AutoGpt](https://github.com/Significant-Gravitas/AutoGPT)     [FastGPT](https://github.com/labring/FastGPT)     [BISHENG](https://github.com/dataelement/bisheng)
 
-**One-Stop Platforms**：[dify](https://github.com/langgenius/dify) [AutoGpt](https://github.com/Significant-Gravitas/AutoGPT) [FastGPT](https://github.com/labring/FastGPT) [BISHENG](https://github.com/dataelement/bisheng)
+  - Development Frameworks: [langchain](https://github.com/langchain-ai/langchain)     [llama_index](https://github.com/run-llama/llama_index)     [semantic-kernel](https://github.com/microsoft/semantic-kernel)     [LangGraph](https://github.com/langchain-ai/langgraph)     [phidata](https://github.com/phidatahq/phidata)     [haystack](https://github.com/deepset-ai/haystack)    
+  - Multi-Agent Frameworks: [crewai](https://github.com/crewAIInc/crewAI)     [Autogen](https://github.com/microsoft/autogen)     [Camel](https://github.com/camel-ai/camel)     [Magentic-One](https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one)     [MetaGPT](https://github.com/geekan/MetaGPT)    
 
-**Development Frameworks**：[langchain](https://github.com/langchain-ai/langchain) [llama_index](https://github.com/run-llama/llama_index) [semantic-kernel](https://github.com/microsoft/semantic-kernel) [LangGraph](https://github.com/langchain-ai/langgraph) [phidata](https://github.com/phidatahq/phidata) [haystack](https://github.com/deepset-ai/haystack)
+  - Build Tools: [AgentOps](https://github.com/AgentOps-AI/agentops)     [AgentStack](https://github.com/AgentOps-AI/AgentStack)     [dspy](https://github.com/stanfordnlp/dspy)     [phoenix](https://github.com/Arize-ai/phoenix)    
 
-**Multi-Agent Frameworks**：[crewai](https://github.com/crewAIInc/crewAI) [Autogen](https://github.com/microsoft/autogen) [Camel](https://github.com/camel-ai/camel) [Magentic-One](https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one) [MetaGPT](https://github.com/geekan/MetaGPT)
+- Planning
+  - Workflow Orchestration: [inngest](https://github.com/inngest/inngest)     [prefect](https://github.com/PrefectHQ/prefect)    
 
-**Building Tools**：[AgentOps](https://github.com/AgentOps-AI/agentops) [AgentStack](https://github.com/AgentOps-AI/AgentStack) [dspy](https://github.com/stanfordnlp/dspy) [phoenix](https://github.com/Arize-ai/phoenix)
+- Memory
+  - Memory Engines: [mem0](https://github.com/mem0ai/mem0)     [DB-GPT](https://github.com/eosphoros-ai/DB-GPT)     [Letta](https://github.com/letta-ai/letta)     [RAGFlow](https://github.com/infiniflow/ragflow)     [Cognee](https://github.com/topoteretes/cognee)     [KnowledgeTable](https://github.com/whyhow-ai/knowledge-table)    
 
+  - GraphRAG Technology: [graphrag](https://github.com/microsoft/graphrag)     [fast-graphrag](https://github.com/circlemind-ai/fast-graphrag)     [LightRAG](https://github.com/HKUDS/LightRAG)     [nano-graphrag](https://github.com/gusye1234/nano-graphrag)    
 
------------------------ Planning ------------------------
+  - Storage: [Milvus](https://github.com/milvus-io/milvus)     [Weaviate](https://github.com/weaviate/weaviate)     [Chroma](https://github.com/chroma-core/chroma)    
 
-**Workflow Orchestration**：[inngest](https://github.com/inngest/inngest) [prefect](https://github.com/PrefectHQ/prefect)
+- Tools
+  - Networking and Communication: [AgentConnect](https://github.com/chgaowei/AgentConnect)     [AgentNetworkProtocol](https://github.com/chgaowei/AgentNetworkProtocol)     [Agora Protocol](https://github.com/agora-protocol/paper-demo)     [agent-protocol](https://github.com/AI-Engineer-Foundation/agent-protocol)     [naptha-sdk](https://github.com/NapthaAI/naptha-sdk)    
 
------------------------ Memory ------------------------
+  - Computer Use API: [npi](https://github.com/npi-ai/npi)    
 
-**Memory Engines**：[mem0](https://github.com/mem0ai/mem0) [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) [Letta](https://github.com/letta-ai/letta) [RAGFlow](https://github.com/infiniflow/ragflow) [Cognee](https://github.com/topoteretes/cognee) [KnowledgeTable](https://github.com/whyhow-ai/knowledge-table)
+  - Authentication: [AgentConnect](https://github.com/chgaowei/AgentConnect)    
 
-**GraphRAG Technology**：[graphrag](https://github.com/microsoft/graphrag) [fast-graphrag](https://github.com/circlemind-ai/fast-graphrag) [LightRAG](https://github.com/HKUDS/LightRAG) [nano-graphrag](https://github.com/gusye1234/nano-graphrag)
+  - Runtime: [E2B](https://github.com/e2b-dev/E2B)    
 
-**Storage**：[Milvus](https://github.com/milvus-io/milvus) [Weaviate](https://github.com/weaviate/weaviate) [Chroma](https://github.com/chroma-core/chroma)
-
------------------------ Tools ------------------------
-
-**Agent Networks and Communication**：[AgentConnect](https://github.com/chgaowei/AgentConnect) [AgentNetworkProtocol](https://github.com/chgaowei/AgentNetworkProtocol) [Agora Protocol](https://github.com/agora-protocol/paper-demo) [agent-protocol](https://github.com/AI-Engineer-Foundation/agent-protocol) [naptha-sdk](https://github.com/NapthaAI/naptha-sdk)
-
-**Computer Use API**：[npi](https://github.com/npi-ai/npi)
-
-**Authentication**：[AgentConnect](https://github.com/chgaowei/AgentConnect)
-
-**Runtime**：[E2B](https://github.com/e2b-dev/E2B)
-
-**Web Browsing**：[Crawlee](https://github.com/apify/crawlee) [Browserless](https://github.com/browserless/browserless) [AgentQL](https://github.com/tinyfish-io/agentql)
+  - Web Browsing: [Crawlee](https://github.com/apify/crawlee)     [Browserless](https://github.com/browserless/browserless)     [AgentQL](https://github.com/tinyfish-io/agentql)    
 
 # Frameworks
 
@@ -231,7 +225,7 @@ GitHub repository: [https://github.com/chroma-core/chroma](https://github.com/ch
 
 # Tools
 
-## Agent Network and Communication
+## Network and Communication
 
 ### AgentConnect
 AgentConnect's vision is to define how agents connect and build an open, secure, and efficient collaboration network for billions of agents. AgentConnect provides the following capabilities:

@@ -58,7 +58,7 @@ github 地址：[https://github.com/chgaowei/AgentConnect](https://github.com/ch
   - 存储：[Milvus](https://github.com/milvus-io/milvus)     [Weaviate](https://github.com/weaviate/weaviate)     [Chroma](https://github.com/chroma-core/chroma)    
 
 - 工具
-  - 智能体网络与通信：[AgentConnect](https://github.com/chgaowei/AgentConnect)     [AgentNetworkProtocol](https://github.com/chgaowei/AgentNetworkProtocol)     [Agora Protocol](https://github.com/agora-protocol/paper-demo)     [agent-protocol](https://github.com/AI-Engineer-Foundation/agent-protocol)     [naptha-sdk](https://github.com/NapthaAI/naptha-sdk)    
+  - 网络与通信：[AgentConnect](https://github.com/chgaowei/AgentConnect)     [AgentNetworkProtocol](https://github.com/chgaowei/AgentNetworkProtocol)     [Agora Protocol](https://github.com/agora-protocol/paper-demo)     [agent-protocol](https://github.com/AI-Engineer-Foundation/agent-protocol)     [naptha-sdk](https://github.com/NapthaAI/naptha-sdk)    
 
   - computer use API：[npi](https://github.com/npi-ai/npi)    
 
@@ -229,7 +229,7 @@ github 地址：[https://github.com/chroma-core/chroma](https://github.com/chrom
 
 # 工具
 
-## 智能体网络与通信
+## 网络与通信
 
 ### AgentConnect
 AgentConnect 的愿景是定义智能体的连接方式，并为数十亿智能体构建一个开放、安全和高效的协作网络。AgentConnect提供以下能力：
