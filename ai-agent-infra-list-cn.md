@@ -39,36 +39,34 @@ github 地址：[https://github.com/chgaowei/AgentConnect](https://github.com/ch
 
 整体的分类结构上，我会按照框架、规划、记忆、工具分为四大类，每个大类下再根据不同的维度细分。分类未必合理，后面可能会做些调整。
 
------------------------- 框架-----------------------
-**一站式平台**：[dify](https://github.com/langgenius/dify) [AutoGpt](https://github.com/Significant-Gravitas/AutoGPT) [FastGPT](https://github.com/labring/FastGPT) [BISHENG](https://github.com/dataelement/bisheng)
+- 框架
+  - 一站式平台：[dify](https://github.com/langgenius/dify)    [AutoGpt](https://github.com/Significant-Gravitas/AutoGPT)     [FastGPT](https://github.com/labring/FastGPT)     [BISHENG](https://github.com/dataelement/bisheng)
 
-**开发框架**：[langchain](https://github.com/langchain-ai/langchain) [llama_index](https://github.com/run-llama/llama_index) [semantic-kernel](https://github.com/microsoft/semantic-kernel) [LangGraph](https://github.com/langchain-ai/langgraph) [phidata](https://github.com/phidatahq/phidata) [haystack](https://github.com/deepset-ai/haystack)
+  - 开发框架：[langchain](https://github.com/langchain-ai/langchain)     [llama_index](https://github.com/run-llama/llama_index)     [semantic-kernel](https://github.com/microsoft/semantic-kernel)     [LangGraph](https://github.com/langchain-ai/langgraph)     [phidata](https://github.com/phidatahq/phidata)     [haystack](https://github.com/deepset-ai/haystack)    
+  - 多智能体框架：[crewai](https://github.com/crewAIInc/crewAI)     [Autogen](https://github.com/microsoft/autogen)     [Camel](https://github.com/camel-ai/camel)     [Magentic-One](https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one)     [MetaGPT](https://github.com/geekan/MetaGPT)    
 
-**多智能体框架**：[crewai](https://github.com/crewAIInc/crewAI) [Autogen](https://github.com/microsoft/autogen) [Camel](https://github.com/camel-ai/camel) [Magentic-One](https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one) [MetaGPT](https://github.com/geekan/MetaGPT)
+  - 构建工具：[AgentOps](https://github.com/AgentOps-AI/agentops)     [AgentStack](https://github.com/AgentOps-AI/AgentStack)     [dspy](https://github.com/stanfordnlp/dspy)     [phoenix](https://github.com/Arize-ai/phoenix)    
 
-**构建工具**：[AgentOps](https://github.com/AgentOps-AI/agentops) [AgentStack](https://github.com/AgentOps-AI/AgentStack) [dspy](https://github.com/stanfordnlp/dspy) [phoenix](https://github.com/Arize-ai/phoenix)
+- 规划
+  - 工作流编排：[inngest](https://github.com/inngest/inngest)     [prefect](https://github.com/PrefectHQ/prefect)    
 
+- 记忆
+  - 记忆引擎：[mem0](https://github.com/mem0ai/mem0)     [DB-GPT](https://github.com/eosphoros-ai/DB-GPT)     [Letta](https://github.com/letta-ai/letta)     [RAGFlow](https://github.com/infiniflow/ragflow)     [Cognee](https://github.com/topoteretes/cognee)     [KnowledgeTable](https://github.com/whyhow-ai/knowledge-table)    
 
------------------------ 规划 ------------------------
-**工作流编排**：[inngest](https://github.com/inngest/inngest) [prefect](https://github.com/PrefectHQ/prefect)
+  - GraphRAG技术：[graphrag](https://github.com/microsoft/graphrag)     [fast-graphrag](https://github.com/circlemind-ai/fast-graphrag)     [LightRAG](https://github.com/HKUDS/LightRAG)     [nano-graphrag](https://github.com/gusye1234/nano-graphrag)    
 
------------------------ 记忆 ------------------------
-**记忆引擎**：[mem0](https://github.com/mem0ai/mem0) [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) [Letta](https://github.com/letta-ai/letta) [RAGFlow](https://github.com/infiniflow/ragflow) [Cognee](https://github.com/topoteretes/cognee) [KnowledgeTable](https://github.com/whyhow-ai/knowledge-table)
+  - 存储：[Milvus](https://github.com/milvus-io/milvus)     [Weaviate](https://github.com/weaviate/weaviate)     [Chroma](https://github.com/chroma-core/chroma)    
 
-**GraphRAG技术**：[graphrag](https://github.com/microsoft/graphrag) [fast-graphrag](https://github.com/circlemind-ai/fast-graphrag) [LightRAG](https://github.com/HKUDS/LightRAG) [nano-graphrag](https://github.com/gusye1234/nano-graphrag)
+- 工具
+  - 智能体网络与通信：[AgentConnect](https://github.com/chgaowei/AgentConnect)     [AgentNetworkProtocol](https://github.com/chgaowei/AgentNetworkProtocol)     [Agora Protocol](https://github.com/agora-protocol/paper-demo)     [agent-protocol](https://github.com/AI-Engineer-Foundation/agent-protocol)     [naptha-sdk](https://github.com/NapthaAI/naptha-sdk)    
 
-**存储**：[Milvus](https://github.com/milvus-io/milvus) [Weaviate](https://github.com/weaviate/weaviate) [Chroma](https://github.com/chroma-core/chroma)
+  - computer use API：[npi](https://github.com/npi-ai/npi)    
 
------------------------ 工具 ------------------------
-**智能体网络与通信**：[AgentConnect](https://github.com/chgaowei/AgentConnect) [AgentNetworkProtocol](https://github.com/chgaowei/AgentNetworkProtocol) [Agora Protocol](https://github.com/agora-protocol/paper-demo) [agent-protocol](https://github.com/AI-Engineer-Foundation/agent-protocol) [naptha-sdk](https://github.com/NapthaAI/naptha-sdk)
+  - 身份验证：[AgentConnect](https://github.com/chgaowei/AgentConnect)    
 
-**computer use API**：[npi](https://github.com/npi-ai/npi)
+  - 运行时：[E2B](https://github.com/e2b-dev/E2B)    
 
-**身份验证**：[AgentConnect](https://github.com/chgaowei/AgentConnect)
-
-**运行时**：[E2B](https://github.com/e2b-dev/E2B)
-
-**网页浏览**：[Crawlee](https://github.com/apify/crawlee) [Browserless](https://github.com/browserless/browserless) [AgentQL](https://github.com/tinyfish-io/agentql)
+  - 网页浏览：[Crawlee](https://github.com/apify/crawlee)     [Browserless](https://github.com/browserless/browserless)     [AgentQL](https://github.com/tinyfish-io/agentql)    
 
 # 框架
 
