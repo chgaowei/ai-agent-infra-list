@@ -18,214 +18,57 @@ AI Agent的重要性是行业共识，当前最大的瓶颈在模型能力特别
 如果你也知道一些优秀的开源项目，或者你对某个项目有不一样的评价，或者你希望推广你的开源项目，欢迎提交PR。
 
 我们也建了一个AI Agent Infra的交流群，欢迎加入一起讨论：
+
 微信：请添加微信号 changshan02 ，备注AI交流入群。
+
 也欢迎加入Discord，和全球技术人一起交流：（https://discord.gg/BNJdvMa5XE）[https://discord.gg/BNJdvMa5XE]
 
 ## 本月推荐项目
 每月更新的时候，都会推荐一个或多个项目。本月先推荐下我们的开源项目 **AgentConnect**，欢迎关注:
-AgentConnect 的愿景是定义智能体的连接方式，并为数十亿智能体构建一个开放、安全和高效的协作网络。AgentConnect提供一下能力：
+AgentConnect 的愿景是定义智能体的连接方式，并为数十亿智能体构建一个开放、安全和高效的协作网络。AgentConnect提供以下能力：
 - 基于W3C DID规范提供了一个去中心化的身份认证方式，可以让智能体掌握自己的身份，并且与其他任意智能体进行跨平台的、安全的、低成本的身份验证。
 - 支持基于DID的端到端加密通信，确保智能体之间的通信安全。
 - 支持元协议协商，允许智能体之间使用自然语言协商双方能力以及通信协议，并且使用LLM生成代码进行协议通信。这有助于实现自组织自协商的智能体网络。
 - 支持应用层协议管理，可以方便的对协议以及协议代码进行加载、更新、卸载，有助于提高智能体之间的通信效率。
 
 github 地址：[https://github.com/chgaowei/AgentConnect](https://github.com/chgaowei/AgentConnect)
+
 技术整体介绍：[https://github.com/chgaowei/AgentNetworkProtocol/blob/main/chinese/00-AgentNetworkProtocol%E6%8A%80%E6%9C%AF%E8%93%9D%E5%9B%BE.md](https://github.com/chgaowei/AgentNetworkProtocol/blob/main/chinese/00-AgentNetworkProtocol%E6%8A%80%E6%9C%AF%E8%93%9D%E5%9B%BE.md)
 
 # 概览
 
 整体的分类结构上，我会按照框架、规划、记忆、工具分为四大类，每个大类下再根据不同的维度细分。分类未必合理，后面可能会做些调整。
 
+------------------------ 框架-----------------------
+**一站式平台**：[dify](https://github.com/langgenius/dify) [AutoGpt](https://github.com/Significant-Gravitas/AutoGPT) [FastGPT](https://github.com/labring/FastGPT) [BISHENG](https://github.com/dataelement/bisheng)
 
-<style>
-.project-map {
-    font-family: Arial, sans-serif;
-    margin: 20px 0;
-}
-.category {
-    border: 2px solid #3498db;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
-}
-.category-title {
-    font-weight: bold;
-    color: #2980b9;
-    margin-bottom: 10px;
-    font-size: 1.2em;
-}
-.subcategory {
-    border: 1px solid #95a5a6;
-    margin: 5px 0;
-    padding: 8px;
-    border-radius: 3px;
-}
-.subcategory-title {
-    font-weight: bold;
-    color: #7f8c8d;
-    margin-bottom: 8px;
-}
-.project-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-.project-link {
-    background: #f0f0f0;
-    padding: 4px 8px;
-    border-radius: 3px;
-    text-decoration: none;
-    color: #34495e;
-}
-.project-link:hover {
-    background: #e0e0e0;
-}
-</style>
+**开发框架**：[langchain](https://github.com/langchain-ai/langchain) [llama_index](https://github.com/run-llama/llama_index) [semantic-kernel](https://github.com/microsoft/semantic-kernel) [LangGraph](https://github.com/langchain-ai/langgraph) [phidata](https://github.com/phidatahq/phidata) [haystack](https://github.com/deepset-ai/haystack)
 
-<div class="project-map">
-    <!-- 框架类别 -->
-    <div class="category">
-        <div class="category-title">框架</div>
-        
-        <div class="subcategory">
-            <div class="subcategory-title">一站式平台</div>
-            <div class="project-list">
-                <a href="https://github.com/langgenius/dify" class="project-link">dify</a>
-                <a href="https://github.com/Significant-Gravitas/AutoGPT" class="project-link">AutoGpt</a>
-                <a href="https://github.com/labring/FastGPT" class="project-link">fastgpt</a>
-                <a href="https://github.com/dataelement/bisheng" class="project-link">BISHENG</a>
-            </div>
-        </div>
+**多智能体框架**：[crewai](https://github.com/crewAIInc/crewAI) [Autogen](https://github.com/microsoft/autogen) [Camel](https://github.com/camel-ai/camel) [Magentic-One](https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one) [MetaGPT](https://github.com/geekan/MetaGPT)
 
-        <div class="subcategory">
-            <div class="subcategory-title">开发框架</div>
-            <div class="project-list">
-                <a href="https://github.com/langchain-ai/langchain" class="project-link">langchain</a>
-                <a href="https://github.com/run-llama/llama_index" class="project-link">llama_index</a>
-                <a href="https://github.com/microsoft/semantic-kernel" class="project-link">semantic-kernel</a>
-                <a href="https://github.com/langchain-ai/langgraph" class="project-link">LangGraph</a>
-                <a href="https://github.com/phidatahq/phidata" class="project-link">phidata</a>
-                <a href="https://github.com/deepset-ai/haystack" class="project-link">haystack</a>
-            </div>
-        </div>
+**构建工具**：[AgentOps](https://github.com/AgentOps-AI/agentops) [AgentStack](https://github.com/AgentOps-AI/AgentStack) [dspy](https://github.com/stanfordnlp/dspy) [phoenix](https://github.com/Arize-ai/phoenix)
 
-        <div class="subcategory">
-            <div class="subcategory-title">多智能体框架</div>
-            <div class="project-list">
-                <a href="https://github.com/crewAIInc/crewAI" class="project-link">crewai</a>
-                <a href="https://github.com/microsoft/autogen" class="project-link">Autogen</a>
-                <a href="https://github.com/camel-ai/camel" class="project-link">Camel</a>
-                <a href="https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one" class="project-link">Magentic-One</a>
-                <a href="https://github.com/geekan/MetaGPT" class="project-link">MetaGPT</a>
-            </div>
-        </div>
 
-        <div class="subcategory">
-            <div class="subcategory-title">构建工具</div>
-            <div class="project-list">
-                <a href="https://github.com/AgentOps-AI/agentops" class="project-link">AgentOps</a>
-                <a href="https://github.com/AgentOps-AI/AgentStack" class="project-link">AgentStack</a>
-                <a href="https://github.com/stanfordnlp/dspy" class="project-link">dspy</a>
-                <a href="https://github.com/Arize-ai/phoenix" class="project-link">phoenix</a>
-            </div>
-        </div>
-    </div>
+----------------------- 规划 ------------------------
+**工作流编排**：[inngest](https://github.com/inngest/inngest) [prefect](https://github.com/PrefectHQ/prefect)
 
-    <!-- 规划类别 -->
-    <div class="category">
-        <div class="category-title">规划</div>
-        
-        <div class="subcategory">
-            <div class="subcategory-title">工作流编排</div>
-            <div class="project-list">
-                <a href="https://github.com/inngest/inngest" class="project-link">inngest</a>
-                <a href="https://github.com/PrefectHQ/prefect" class="project-link">prefect</a>
-            </div>
-        </div>
-    </div>
+----------------------- 记忆 ------------------------
+**记忆引擎**：[mem0](https://github.com/mem0ai/mem0) [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) [Letta](https://github.com/letta-ai/letta) [RAGFlow](https://github.com/infiniflow/ragflow) [Cognee](https://github.com/topoteretes/cognee) [KnowledgeTable](https://github.com/whyhow-ai/knowledge-table)
 
-    <!-- 记忆类别 -->
-    <div class="category">
-        <div class="category-title">记忆</div>
-        
-        <div class="subcategory">
-            <div class="subcategory-title">记忆引擎</div>
-            <div class="project-list">
-                <a href="https://github.com/mem0ai/mem0" class="project-link">mem0</a>
-                <a href="https://github.com/eosphoros-ai/DB-GPT" class="project-link">DB-GPT</a>
-                <a href="https://github.com/letta-ai/letta" class="project-link">Letta</a>
-                <a href="https://github.com/infiniflow/ragflow" class="project-link">RAGFlow</a>
-                <a href="https://github.com/topoteretes/cognee" class="project-link">Cognee</a>
-                <a href="https://github.com/whyhow-ai/knowledge-table" class="project-link">KnowledgeTable</a>
-            </div>
-        </div>
+**GraphRAG技术**：[graphrag](https://github.com/microsoft/graphrag) [fast-graphrag](https://github.com/circlemind-ai/fast-graphrag) [LightRAG](https://github.com/HKUDS/LightRAG) [nano-graphrag](https://github.com/gusye1234/nano-graphrag)
 
-        <div class="subcategory">
-            <div class="subcategory-title">GraphRAG技术</div>
-            <div class="project-list">
-                <a href="https://github.com/microsoft/graphrag" class="project-link">graphrag</a>
-                <a href="https://github.com/circlemind-ai/fast-graphrag" class="project-link">fast-graphrag</a>
-                <a href="https://github.com/HKUDS/LightRAG" class="project-link">LightRAG</a>
-                <a href="https://github.com/gusye1234/nano-graphrag" class="project-link">nano-graphrag</a>
-            </div>
-        </div>
+**存储**：[Milvus](https://github.com/milvus-io/milvus) [Weaviate](https://github.com/weaviate/weaviate) [Chroma](https://github.com/chroma-core/chroma)
 
-        <div class="subcategory">
-            <div class="subcategory-title">存储</div>
-            <div class="project-list">
-                <a href="https://github.com/milvus-io/milvus" class="project-link">Milvus</a>
-                <a href="https://github.com/weaviate/weaviate" class="project-link">Weaviate</a>
-                <a href="https://github.com/chroma-core/chroma" class="project-link">Chroma</a>
-            </div>
-        </div>
-    </div>
+----------------------- 工具 ------------------------
+**智能体网络与通信**：[AgentConnect](https://github.com/chgaowei/AgentConnect) [AgentNetworkProtocol](https://github.com/chgaowei/AgentNetworkProtocol) [Agora Protocol](https://github.com/agora-protocol/paper-demo) [agent-protocol](https://github.com/AI-Engineer-Foundation/agent-protocol) [naptha-sdk](https://github.com/NapthaAI/naptha-sdk)
 
-    <!-- 工具类别 -->
-    <div class="category">
-        <div class="category-title">工具</div>
-        
-        <div class="subcategory">
-            <div class="subcategory-title">智能体网络与通信</div>
-            <div class="project-list">
-                <a href="https://github.com/chgaowei/AgentConnect" class="project-link">AgentConnect</a>
-                <a href="https://github.com/chgaowei/AgentNetworkProtocol" class="project-link">AgentNetworkProtocol</a>
-                <a href="https://github.com/agora-protocol/paper-demo" class="project-link">Agora Protocol</a>
-                <a href="https://github.com/AI-Engineer-Foundation/agent-protocol" class="project-link">agent-protocol</a>
-                <a href="https://github.com/NapthaAI/naptha-sdk" class="project-link">naptha-sdk</a>
-            </div>
-        </div>
+**computer use API**：[npi](https://github.com/npi-ai/npi)
 
-        <div class="subcategory">
-            <div class="subcategory-title">computer use API</div>
-            <div class="project-list">
-                <a href="https://github.com/npi-ai/npi" class="project-link">npi</a>
-            </div>
-        </div>
+**身份验证**：[AgentConnect](https://github.com/chgaowei/AgentConnect)
 
-        <div class="subcategory">
-            <div class="subcategory-title">身份验证</div>
-            <div class="project-list">
-                <a href="https://github.com/chgaowei/AgentConnect" class="project-link">AgentConnect</a>
-            </div>
-        </div>
+**运行时**：[E2B](https://github.com/e2b-dev/E2B)
 
-        <div class="subcategory">
-            <div class="subcategory-title">运行时</div>
-            <div class="project-list">
-                <a href="https://github.com/e2b-dev/E2B" class="project-link">E2B</a>
-            </div>
-        </div>
-
-        <div class="subcategory">
-            <div class="subcategory-title">网页浏览</div>
-            <div class="project-list">
-                <a href="https://github.com/apify/crawlee" class="project-link">Crawlee</a>
-                <a href="https://github.com/browserless/browserless" class="project-link">Browserless</a>
-                <a href="https://github.com/tinyfish-io/agentql" class="project-link">AgentQL</a>
-            </div>
-        </div>
-    </div>
-</div>
+**网页浏览**：[Crawlee](https://github.com/apify/crawlee) [Browserless](https://github.com/browserless/browserless) [AgentQL](https://github.com/tinyfish-io/agentql)
 
 # 框架
 
@@ -391,7 +234,7 @@ github 地址：[https://github.com/chroma-core/chroma](https://github.com/chrom
 ## 智能体网络与通信
 
 ### AgentConnect
-AgentConnect 的愿景是定义智能体的连接方式，并为数十亿智能体构建一个开放、安全和高效的协作网络。AgentConnect提供一下能力：
+AgentConnect 的愿景是定义智能体的连接方式，并为数十亿智能体构建一个开放、安全和高效的协作网络。AgentConnect提供以下能力：
 - 基于W3C DID规范提供了一个去中心化的身份认证方式，可以让智能体掌握自己的身份，并且与其他任意智能体进行跨平台的、安全的、低成本的身份验证。
 - 支持基于DID的端到端加密通信，确保智能体之间的通信安全。
 - 支持元协议协商，允许智能体之间使用自然语言协商双方能力以及通信协议，并且使用LLM生成代码进行协议通信。这有助于实现自组织自协商的智能体网络。
