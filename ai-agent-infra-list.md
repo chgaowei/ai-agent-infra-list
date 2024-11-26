@@ -392,6 +392,12 @@ Naptha enables users to build decentralized multi-agent workflows. Decentralized
 GitHub repository: [https://github.com/NapthaAI/naptha-sdk](https://github.com/NapthaAI/naptha-sdk)
 
 
+### modelcontextprotocol
+The Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools. Whether you're building an AI-powered IDE, enhancing a chat interface, or creating custom AI workflows, MCP provides a standardized way to connect LLMs with the context they need.
+
+GitHub repository: [https://github.com/modelcontextprotocol](https://github.com/modelcontextprotocol)
+
+
 ## Computer Use API
 
 

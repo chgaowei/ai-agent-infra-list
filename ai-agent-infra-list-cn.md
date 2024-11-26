@@ -50,7 +50,7 @@ github 地址：[https://github.com/chgaowei/AgentConnect](https://github.com/ch
   - GraphRAG技术：[graphrag](https://github.com/microsoft/graphrag)     [fast-graphrag](https://github.com/circlemind-ai/fast-graphrag)     [LightRAG](https://github.com/HKUDS/LightRAG)     [nano-graphrag](https://github.com/gusye1234/nano-graphrag)    
   - 存储：[Milvus](https://github.com/milvus-io/milvus)     [Weaviate](https://github.com/weaviate/weaviate)     [Chroma](https://github.com/chroma-core/chroma)    
 - 工具
-  - 网络与通信：[AgentConnect](https://github.com/chgaowei/AgentConnect)     [AgentNetworkProtocol](https://github.com/chgaowei/AgentNetworkProtocol)     [Agora Protocol](https://github.com/agora-protocol/paper-demo)     [agent-protocol](https://github.com/AI-Engineer-Foundation/agent-protocol)     [naptha-sdk](https://github.com/NapthaAI/naptha-sdk)    
+  - 网络与通信：[AgentConnect](https://github.com/chgaowei/AgentConnect)     [AgentNetworkProtocol](https://github.com/chgaowei/AgentNetworkProtocol)     [Agora Protocol](https://github.com/agora-protocol/paper-demo)     [agent-protocol](https://github.com/AI-Engineer-Foundation/agent-protocol)     [naptha-sdk](https://github.com/NapthaAI/naptha-sdk)    [modelcontextprotocol](https://github.com/modelcontextprotocol)
   - computer use API：[npi](https://github.com/npi-ai/npi)    
   - 身份验证：[AgentConnect](https://github.com/chgaowei/AgentConnect)    
   - 运行时：[E2B](https://github.com/e2b-dev/E2B)    
@@ -281,6 +281,10 @@ github 地址：[https://github.com/AI-Engineer-Foundation/agent-protocol](https
 Naptha 使用户能够构建去中心化的多代理工作流。去中心化工作流可以在一个或多个节点（而不是一个中央服务器）上运行，具有不同的 LLM 和许多本地数据源。
 
 github 地址：[https://github.com/NapthaAI/naptha-sdk](https://github.com/NapthaAI/naptha-sdk)
+
+### modelcontextprotocol
+模型上下文协议（MCP）是一种开放协议，它能够实现大型语言模型（LLM）应用程序与外部数据源及工具之间的无缝集成。无论你是在构建一个由人工智能驱动的集成开发环境（IDE），增强聊天界面，还是创建定制的人工智能工作流程，模型上下文协议都提供了一种标准化的方式，将大型语言模型与它们所需的上下文连接起来。
+github 地址：[https://github.com/modelcontextprotocol](https://github.com/modelcontextprotocol)
 
 ## computer use API
 
