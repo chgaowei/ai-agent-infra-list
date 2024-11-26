@@ -198,6 +198,13 @@ A Python SDK for AI agent monitoring, LLM cost tracking, benchmarking, and more.
 GitHub repository: [https://github.com/AgentOps-AI/agentops](https://github.com/AgentOps-AI/agentops)
 
 
+### langfuse
+
+Langfuse is an open-source LLM engineering platform: LLM observability, metrics, evaluation, prompt management, Playground, datasets. Integrates with LlamaIndex, Langchain, OpenAI SDK, LiteLLM, etc.
+
+GitHub repository: [https://github.com/langfuse/langfuse](https://github.com/langfuse/langfuse)
+
+
 ### AgentStack
 
 AgentStack enables you to create AI agent projects from the command line. It's an excellent tool for bootstrapping agent projects and provides numerous CLI utilities for easy code generation throughout the development process.

@@ -146,6 +146,11 @@ github 地址：[https://github.com/geekan/MetaGPT](https://github.com/geekan/Me
 
 github 地址：[https://github.com/AgentOps-AI/agentops](https://github.com/AgentOps-AI/agentops)
 
+### langfuse
+Langfuse 是一个开源 LLM 工程平台：LLM 可观测性、指标、评估、提示管理、Playground、数据集。与 LlamaIndex、Langchain、OpenAI SDK、LiteLLM 等集成
+
+github 地址：[https://github.com/langfuse/langfuse](https://github.com/langfuse/langfuse)
+
 ### AgentStack
 AgentStack 开让你从命令行创建 AI 代理项目，它是启动代理项目的绝佳工具，并提供了许多 CLI 实用程序，用于在整个开发过程中轻松生成代码。
 
