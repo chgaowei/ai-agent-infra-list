@@ -226,6 +226,14 @@ Phoenix is an open-source AI observability platform primarily used for experimen
 GitHub repository: [https://github.com/Arize-ai/phoenix](https://github.com/Arize-ai/phoenix)
 
 
+## Featured Agents
+
+### TEN-Agent
+TEN Agent is a world-class multimodal AI agent integrated with OpenAI Realtime API and RTC, featuring weather checks, web searches, vision, and RAG capabilities. It combines the ultra-low latency of OpenAI Realtime API with the AI noise suppression of RTC, ensuring smooth and high-quality interactions. Consider using it if you want to build a real-time call agent.
+
+GitHub repository: [https://github.com/TEN-framework/TEN-Agent](https://github.com/TEN-framework/TEN-Agent)
+
+
 # Planning
 
 

@@ -166,6 +166,13 @@ Phoenix 是一个开源的 AI 可观察性平台，主要用于实验、评估�
 
 github 地址：[https://github.com/Arize-ai/phoenix](https://github.com/Arize-ai/phoenix)
 
+## 有特色的代理
+
+### TEN-Agent
+TEN Agent 是与 OpenAI Realtime API、RTC 集成的世界级多模态 AI 代理，具有天气检查、网络搜索、视觉和 RAG 功能。它将 OpenAI Realtime API 的超低延迟与 RTC 的 AI 噪声抑制相结合，确保流畅、高质量的交互。如果要构建实时通话代理可以考虑使用。
+
+github 地址：[https://github.com/TEN-framework/TEN-Agent](https://github.com/TEN-framework/TEN-Agent)
+
 # 规划
 
 ## 工作流编排
