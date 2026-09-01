@@ -67,7 +67,7 @@ For the overall classification structure, I will divide it into four main catego
   - Networking and Communication: [AgentConnect](https://github.com/chgaowei/AgentConnect)     [AgentNetworkProtocol](https://github.com/chgaowei/AgentNetworkProtocol)     [Agora Protocol](https://github.com/agora-protocol/paper-demo)     [agent-protocol](https://github.com/AI-Engineer-Foundation/agent-protocol)     [naptha-sdk](https://github.com/NapthaAI/naptha-sdk)
   - Computer Use API: [npi](https://github.com/npi-ai/npi)
   - Authentication: [AgentConnect](https://github.com/chgaowei/AgentConnect)
-  - Runtime: [E2B](https://github.com/e2b-dev/E2B)
+  - Runtime: [E2B](https://github.com/e2b-dev/E2B)     [SandBase Harness](https://github.com/sandbaseai/sandbase-harness)
   - Web Browsing: [Crawlee](https://github.com/apify/crawlee)     [Browserless](https://github.com/browserless/browserless)     [AgentQL](https://github.com/tinyfish-io/agentql)
 
   
@@ -441,6 +441,12 @@ GitHub repository: [https://github.com/chgaowei/AgentConnect](https://github.com
 E2B is an open-source infrastructure that allows you to run AI-generated code in secure isolated sandboxes in the cloud.
 
 GitHub repository: [https://github.com/e2b-dev/E2B](https://github.com/e2b-dev/E2B)
+
+### SandBase Harness
+
+SandBase Harness is a local-first TypeScript AI agent runtime with persistent sessions, sandboxed tool execution, MCP integration, memory, credential isolation, audit logs, and execution replay. It supports local, Docker, Kubernetes, and self-hosted deployments.
+
+GitHub repository: [https://github.com/sandbaseai/sandbase-harness](https://github.com/sandbaseai/sandbase-harness)
 
 
 ## Web Browsing

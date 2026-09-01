@@ -53,7 +53,7 @@ github 地址：[https://github.com/chgaowei/AgentConnect](https://github.com/ch
   - 网络与通信：[AgentConnect](https://github.com/chgaowei/AgentConnect)     [AgentNetworkProtocol](https://github.com/chgaowei/AgentNetworkProtocol)     [Agora Protocol](https://github.com/agora-protocol/paper-demo)     [agent-protocol](https://github.com/AI-Engineer-Foundation/agent-protocol)     [naptha-sdk](https://github.com/NapthaAI/naptha-sdk)    [modelcontextprotocol](https://github.com/modelcontextprotocol)
   - computer use API：[npi](https://github.com/npi-ai/npi)    
   - 身份验证：[AgentConnect](https://github.com/chgaowei/AgentConnect)    
-  - 运行时：[E2B](https://github.com/e2b-dev/E2B)    
+  - 运行时：[E2B](https://github.com/e2b-dev/E2B)     [SandBase Harness](https://github.com/sandbaseai/sandbase-harness)
   - 网页浏览：[Crawlee](https://github.com/apify/crawlee)     [Browserless](https://github.com/browserless/browserless)     [AgentQL](https://github.com/tinyfish-io/agentql)    
 
 # 框架
@@ -318,6 +318,11 @@ github 地址：[https://github.com/chgaowei/AgentConnect](https://github.com/ch
 E2B 是一种开源基础设施，允许您在云中的安全隔离沙箱中运行 AI 生成的代码。
 
 github 地址：[https://github.com/e2b-dev/E2B](https://github.com/e2b-dev/E2B)
+
+### SandBase Harness
+SandBase Harness 是一个本地优先的 TypeScript AI Agent Runtime，提供持久化会话、沙箱工具执行、MCP 集成、记忆、凭据隔离、审计日志和执行回放，支持本地、Docker、Kubernetes 以及自托管部署。
+
+github 地址：[https://github.com/sandbaseai/sandbase-harness](https://github.com/sandbaseai/sandbase-harness)
 
 ## 网页浏览
 
