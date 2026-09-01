@@ -169,7 +169,7 @@ github 地址：[https://github.com/a2aproject/A2A](https://github.com/a2aprojec
 
 官方 servers：[https://github.com/modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers)
 
-GitHub 组织：[https://github.com/modelcontextprotocol](https://github.com/modelcontextprotocol)
+github 组织：[https://github.com/modelcontextprotocol](https://github.com/modelcontextprotocol)
 
 ### MCP servers
 
@@ -353,7 +353,7 @@ github 地址：[https://github.com/TEN-framework/ten-framework](https://github.
 
 ### AgentStack
 
-从命令行启动 AI 智能体项目并生成样板代码的 CLI。GitHub 组织现为 `agentstack-ai`。
+从命令行启动 AI 智能体项目并生成样板代码的 CLI。活跃度低于最初收录时。GitHub 组织现为 `agentstack-ai`。
 
 github 地址：[https://github.com/agentstack-ai/AgentStack](https://github.com/agentstack-ai/AgentStack)
 
@@ -375,7 +375,7 @@ github 地址：[https://github.com/camel-ai/camel](https://github.com/camel-ai/
 
 ### MetaGPT
 
-多智能体「软件公司」模式：一行需求输入，产出 PM / 架构师 / 工程师等角色与 SOP。
+多智能体「软件公司」模式：一行需求输入，产出 PM / 架构师 / 工程师等角色与 SOP。仓库已从 `geekan/MetaGPT` 迁至 FoundationAgents/MetaGPT。
 
 github 地址：[https://github.com/FoundationAgents/MetaGPT](https://github.com/FoundationAgents/MetaGPT)
 
@@ -610,7 +610,7 @@ github 地址：[https://github.com/microsoft/semantic-kernel](https://github.co
 
 ### Magentic-One
 
-通用多智能体系统（协调者 + 专长智能体），以 AutoGen 包形式发布。偏研究/参考，不是 2026 默认栈。
+通用多智能体系统（协调者 + 专长智能体），以 AutoGen 包形式发布。原 `autogen-magentic-one` 目录现为**弃用占位**；Magentic 风格编排现位于 AutoGen AgentChat，新项目请用 Microsoft Agent Framework。此处归入 AutoGen/历史，不再作为在列框架。
 
 github 地址：[https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one](https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one)
 
