@@ -2,346 +2,650 @@
 
 # 前言
 
-AI Agent的重要性是行业共识，当前最大的瓶颈在模型能力特别是模型的推理能力。不过随着o1的发布，也许我们可以把一部分目光转到其他的瓶颈上。这是我写这篇文章的初衷。
+AI Agent 的重要性是行业共识。到 2026 年，瓶颈已不只是模型能力：还包括智能体如何**互认身份**、**调用工具**、**委派任务**、**与用户交互**以及**安全运行**。本清单覆盖这一分层栈，不包含模型本身。
 
-我在这篇文章中讨论的AI Agent Infra（智能体基础设施），并不包含模型，而主要是除模型之外的其他基础设施，比如记忆、工具、框架、容器等等。
+这篇文章的目的有三个：
 
-之所以写这篇文章，是因为平时经常会看到一些非常不错的开源项目，但是没有地方记录。有的时候想找一个开源项目，又不好找。所以这篇文章的目的有三个：
 - 找个地方记录优秀的、有创意的开源项目
-- 帮助AI Agent开发者快速找到合适的基础设施
-- 帮助AI Agent开发者快速了解AI Agent基础设施的发展现状
+- 帮助 AI Agent 开发者快速找到合适的基础设施
+- 帮助 AI Agent 开发者快速了解 AI Agent 基础设施的发展现状
 
 我们暂时只收集开源项目，未来也可能会收集商业产品。
 
-这篇文章我会持续更新，也许会一个月更新一次，每月会更新一些优秀的、有创意的项目。另外，我准备以开源项目的方式来维护这篇文章。我创建了一个github仓库，地址是：[https://github.com/chgaowei/ai-agent-infra-list](https://github.com/chgaowei/ai-agent-infra-list)。
+这篇文章我会持续更新。我以开源项目的方式维护它：[https://github.com/chgaowei/ai-agent-infra-list](https://github.com/chgaowei/ai-agent-infra-list)。
 
-如果你也知道一些优秀的开源项目，或者你对某个项目有不一样的评价，或者你希望推广你的开源项目，欢迎提交PR。
+如果你也知道一些优秀的开源项目，或者你对某个项目有不一样的评价，或者你希望推广你的开源项目，欢迎提交 PR。
 
-我们也建了一个AI Agent Infra的交流群，欢迎加入一起讨论：
+我们也建了一个 AI Agent Infra 的交流群，欢迎加入一起讨论：
 
-微信：请添加微信号 changshan02 ，备注AI交流入群。
+微信：请添加微信号 changshan02 ，备注 AI 交流入群。
 
-也欢迎加入Discord，和全球技术人一起交流：[https://discord.gg/BNJdvMa5XE](https://discord.gg/BNJdvMa5XE)
+也欢迎加入 Discord，和全球技术人一起交流：[https://discord.gg/BNJdvMa5XE](https://discord.gg/BNJdvMa5XE)
 
-## 本月推荐项目
-每月更新的时候，都会推荐一个或多个项目。本月先推荐下我们的开源项目 **AgentConnect**，欢迎关注:
-AgentConnect 的愿景是定义智能体的连接方式，并为数十亿智能体构建一个开放、安全和高效的协作网络。AgentConnect提供以下能力：
-- 基于W3C DID规范提供了一个去中心化的身份认证方式，可以让智能体掌握自己的身份，并且与其他任意智能体进行跨平台的、安全的、低成本的身份验证。
-- 支持基于DID的端到端加密通信，确保智能体之间的通信安全。
-- 支持元协议协商，允许智能体之间使用自然语言协商双方能力以及通信协议，并且使用LLM生成代码进行协议通信。这有助于实现自组织自协商的智能体网络。
-- 支持应用层协议管理，可以方便的对协议以及协议代码进行加载、更新、卸载，有助于提高智能体之间的通信效率。
+## 本次更新（2026-09）
 
-github 地址：[https://github.com/chgaowei/AgentConnect](https://github.com/chgaowei/AgentConnect)
+**推荐：** 把协议看成**分层栈**，而不是互相替代的竞品。
 
-技术整体介绍：[https://github.com/chgaowei/AgentNetworkProtocol/blob/main/chinese/00-AgentNetworkProtocol%E6%8A%80%E6%9C%AF%E8%93%9D%E5%9B%BE.md](https://github.com/chgaowei/AgentNetworkProtocol/blob/main/chinese/00-AgentNetworkProtocol%E6%8A%80%E6%9C%AF%E8%93%9D%E5%9B%BE.md)
+- **身份 / 开放互联网：** [ANP 1.1](https://github.com/agent-network-protocol/AgentNetworkProtocol)（`did:wba`），孵化于 [W3C AI Agent Protocol Community Group](https://www.w3.org/community/agentprotocol/)
+- **智能体之间的任务：** [A2A](https://github.com/a2aproject/A2A)
+- **工具与上下文：** [MCP](https://modelcontextprotocol.io)
+
+ANP 是开放互联网上的身份与发现层；A2A 是任务/运行时协作层；MCP 是工具层。三者一起用。
+
+命名陷阱：**IBM ACP**（Agent Communication Protocol）已于 **2025 年 8 月并入 A2A**，不再作为独立标准。**Zed ACP**（Agent Client Protocol）以及 **OpenAI/Stripe 的 Agentic Commerce Protocol** 也缩写为 “ACP”，三者互不相关。
+
+### 协议对照（分层，而非对立）
+
+| 协议 | 层级 | 标准化内容 | 说明 |
+| --- | --- | --- | --- |
+| **ANP / did:wba** | 身份与开放互联网 | 去中心化身份、发现、能力描述、加密协作 | 与 A2A/MCP 是对等层，不是替代。规范：[AgentNetworkProtocol](https://github.com/agent-network-protocol/AgentNetworkProtocol)。SDK：[AgentConnect](https://github.com/agent-network-protocol/anp)（仓库现名 `anp`）。站点：[agent-network-protocol.com](https://agent-network-protocol.com/) |
+| **A2A** | 智能体间任务 | Agent Card、任务生命周期、不透明智能体协作 | Linux Foundation。IBM ACP 于 2025 年 8 月并入。[a2a-protocol.org](https://a2a-protocol.org) |
+| **MCP** | 智能体到工具 | 工具、资源、提示词 | [modelcontextprotocol.io](https://modelcontextprotocol.io) |
+| **AG-UI / A2UI** | 智能体到用户界面 | 前端事件流（AG-UI）；声明式原生 UI（A2UI） | 互补，不是竞品 |
+| **Zed ACP** | 智能体到编辑器 / IDE | 任意编辑器连接任意编码智能体 | **不是** IBM ACP，也 **不是** A2A |
 
 # 概览
 
-整体的分类结构上，我会按照框架、规划、记忆、工具分为四大类，每个大类下再根据不同的维度细分。分类未必合理，后面可能会做些调整。
-- 框架
-  - 一站式平台：[dify](https://github.com/langgenius/dify)    [AutoGpt](https://github.com/Significant-Gravitas/AutoGPT)     [FastGPT](https://github.com/labring/FastGPT)     [BISHENG](https://github.com/dataelement/bisheng)
-  - 开发框架：[langchain](https://github.com/langchain-ai/langchain)     [llama_index](https://github.com/run-llama/llama_index)     [semantic-kernel](https://github.com/microsoft/semantic-kernel)     [LangGraph](https://github.com/langchain-ai/langgraph)     [phidata](https://github.com/phidatahq/phidata)     [haystack](https://github.com/deepset-ai/haystack)    
-  - 多智能体框架：[crewai](https://github.com/crewAIInc/crewAI)     [Autogen](https://github.com/microsoft/autogen)     [Camel](https://github.com/camel-ai/camel)     [Magentic-One](https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one)     [MetaGPT](https://github.com/geekan/MetaGPT)    
-  - 构建工具：[AgentOps](https://github.com/AgentOps-AI/agentops)     [AgentStack](https://github.com/AgentOps-AI/AgentStack)     [dspy](https://github.com/stanfordnlp/dspy)     [phoenix](https://github.com/Arize-ai/phoenix)    
-- 规划
-  - 工作流编排：[inngest](https://github.com/inngest/inngest)     [prefect](https://github.com/PrefectHQ/prefect)    
-- 记忆
-  - 记忆引擎：[mem0](https://github.com/mem0ai/mem0)     [DB-GPT](https://github.com/eosphoros-ai/DB-GPT)     [Letta](https://github.com/letta-ai/letta)     [RAGFlow](https://github.com/infiniflow/ragflow)     [Cognee](https://github.com/topoteretes/cognee)     [KnowledgeTable](https://github.com/whyhow-ai/knowledge-table)    
-  - GraphRAG技术：[graphrag](https://github.com/microsoft/graphrag)     [fast-graphrag](https://github.com/circlemind-ai/fast-graphrag)     [LightRAG](https://github.com/HKUDS/LightRAG)     [nano-graphrag](https://github.com/gusye1234/nano-graphrag)    
-  - 存储：[Milvus](https://github.com/milvus-io/milvus)     [Weaviate](https://github.com/weaviate/weaviate)     [Chroma](https://github.com/chroma-core/chroma)    
-- 工具
-  - 网络与通信：[AgentConnect](https://github.com/chgaowei/AgentConnect)     [AgentNetworkProtocol](https://github.com/chgaowei/AgentNetworkProtocol)     [Agora Protocol](https://github.com/agora-protocol/paper-demo)     [agent-protocol](https://github.com/AI-Engineer-Foundation/agent-protocol)     [naptha-sdk](https://github.com/NapthaAI/naptha-sdk)    [modelcontextprotocol](https://github.com/modelcontextprotocol)
-  - computer use API：[npi](https://github.com/npi-ai/npi)    
-  - 身份验证：[AgentConnect](https://github.com/chgaowei/AgentConnect)    
-  - 运行时：[E2B](https://github.com/e2b-dev/E2B)     [SandBase Harness](https://github.com/sandbaseai/sandbase-harness)
-  - 网页浏览：[Crawlee](https://github.com/apify/crawlee)     [Browserless](https://github.com/browserless/browserless)     [AgentQL](https://github.com/tinyfish-io/agentql)    
+2026 年的分类快照。项目可能横跨多个类别；正文一般只详写一次（ANP / A2A / MCP 会有交叉引用）。
 
-# 框架
+- 标准组织与工作组：[W3C AI Agent Protocol CG](https://www.w3.org/community/agentprotocol/) · [AAIF](https://aaif.io) · [A2A](https://github.com/a2aproject/A2A) · [AGNTCY](https://agntcy.org) · [AP2](https://github.com/google-agentic-commerce/AP2)
+- 身份与信任：[ANP](https://github.com/agent-network-protocol/AgentNetworkProtocol) · [did:wba](https://github.com/agent-network-protocol/AgentNetworkProtocol) · [AgentConnect](https://github.com/agent-network-protocol/anp) · [W3C DID](https://www.w3.org/TR/did/)
+- 智能体间协议：[ANP](https://github.com/agent-network-protocol/AgentNetworkProtocol) · [A2A](https://github.com/a2aproject/A2A)
+- 智能体到工具 / MCP：[MCP spec](https://github.com/modelcontextprotocol/modelcontextprotocol) · [servers](https://github.com/modelcontextprotocol/servers) · [registry](https://registry.modelcontextprotocol.io) · [goose](https://github.com/block/goose) · [AGENTS.md](https://github.com/agentsmd/agents.md) · [agentgateway](https://github.com/agentgateway/agentgateway)
+- 智能体到用户 / UI：[AG-UI](https://github.com/ag-ui-protocol/ag-ui) · [A2UI](https://a2ui.org)
+- 智能体到客户端 / IDE：[Zed ACP](https://github.com/zed-industries/agent-client-protocol)
+- 商务与支付：[AP2](https://github.com/google-agentic-commerce/AP2) · [Agentic Commerce Protocol](https://github.com/agentic-commerce-protocol/agentic-commerce-protocol)
+- 框架与编排：[OpenAI Agents SDK](https://github.com/openai/openai-agents-python) · [Google ADK](https://github.com/google/adk-python) · [Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-python) · [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) · [LangGraph](https://github.com/langchain-ai/langgraph) · [LangChain](https://github.com/langchain-ai/langchain) · [LlamaIndex](https://github.com/run-llama/llama_index) · [Agno](https://github.com/agno-agi/agno) · [Pydantic AI](https://github.com/pydantic/pydantic-ai) · [Mastra](https://github.com/mastra-ai/mastra) · [Qwen-Agent](https://github.com/QwenLM/Qwen-Agent) · [Strands](https://github.com/strands-agents/sdk-python) · [Haystack](https://github.com/deepset-ai/haystack) · [DSPy](https://github.com/stanfordnlp/dspy) · [Inngest](https://github.com/inngest/inngest) · [Prefect](https://github.com/PrefectHQ/prefect) · [TEN-Agent](https://github.com/TEN-framework/ten-framework) · [AgentStack](https://github.com/agentstack-ai/AgentStack)
+- 多智能体：[CrewAI](https://github.com/crewAIInc/crewAI) · [CAMEL](https://github.com/camel-ai/camel) · [MetaGPT](https://github.com/FoundationAgents/MetaGPT)（另见 LangGraph / Microsoft Agent Framework）
+- 记忆与 RAG：[mem0](https://github.com/mem0ai/mem0) · [Graphiti](https://github.com/getzep/graphiti) · [Letta](https://github.com/letta-ai/letta) · [RAGFlow](https://github.com/infiniflow/ragflow) · [Cognee](https://github.com/topoteretes/cognee) · [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) · [GraphRAG](https://github.com/microsoft/graphrag) · [fast-graphrag](https://github.com/circlemind-ai/fast-graphrag) · [LightRAG](https://github.com/HKUDS/LightRAG) · [nano-graphrag](https://github.com/gusye1234/nano-graphrag) · [Milvus](https://github.com/milvus-io/milvus) · [Weaviate](https://github.com/weaviate/weaviate) · [Chroma](https://github.com/chroma-core/chroma)
+- 浏览器与计算机使用：[Scrapeless](https://github.com/scrapeless-ai) · [browser-use](https://github.com/browser-use/browser-use) · [Skyvern](https://github.com/Skyvern-AI/skyvern) · [Open-AutoGLM](https://github.com/zai-org/Open-AutoGLM) · [Crawlee](https://github.com/apify/crawlee) · [Browserless](https://github.com/browserless/browserless) · [AgentQL](https://github.com/tinyfish-io/agentql)
+- 运行时、沙箱与网关：[Daytona](https://github.com/daytonaio/daytona) · [E2B](https://github.com/e2b-dev/E2B) · [SandBase Harness](https://github.com/sandbaseai/sandbase-harness) · [goose](https://github.com/block/goose) · [agentgateway](https://github.com/agentgateway/agentgateway)
+- 可观测性与评测：[Langfuse](https://github.com/langfuse/langfuse) · [Phoenix](https://github.com/Arize-ai/phoenix) · [AgentOps](https://github.com/AgentOps-AI/agentops) · [OpenTelemetry GenAI conventions](https://github.com/open-telemetry/semantic-conventions-genai)
+- 可视化 / 低代码平台：[n8n](https://github.com/n8n-io/n8n) · [Coze Studio](https://github.com/coze-dev/coze-studio) · [Dify](https://github.com/langgenius/dify) · [FastGPT](https://github.com/labring/FastGPT) · [BISHENG](https://github.com/dataelement/bisheng)
+- 历史 / 归档 / 维护模式：[AutoGPT](https://github.com/Significant-Gravitas/AutoGPT) · [AutoGen](https://github.com/microsoft/autogen) · [Semantic Kernel](https://github.com/microsoft/semantic-kernel) · [Magentic-One](https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one) · [npi](https://github.com/sheet0/npi) · [agent-protocol](https://github.com/agi-inc/agent-protocol) · [Agora Protocol](https://github.com/agora-protocol/paper-demo) · [naptha-sdk](https://github.com/NapthaAI/naptha-sdk)
 
-## 一站式平台
 
-### dify
-Dify 是一个开源的 LLM 应用程序开发平台。Dify 的直观界面结合了 AI 工作流程、RAG 管道、代理功能、模型管理、可观测性功能等，让您可以快速从原型到生产。
+# 1. 标准组织与工作组
 
-github 地址：[https://github.com/langgenius/dify](https://github.com/langgenius/dify)
+### W3C AI Agent Protocol Community Group
 
-### AutoGpt
-AutoGPT 是一个强大的平台，可用于创建、部署和管理持续运行的 AI 智能体，从而实现复杂工作流程的自动化。AutoGpt已经转型，从最早的demo，增加了工作流能力。
+W3C 社区组，制定开放、可互操作的协议，使智能体能够在 Web 上发现、识别并协作。ANP / `did:wba` 在此孵化。
 
-github 地址：[https://github.com/Significant-Gravitas/AutoGPT](https://github.com/Significant-Gravitas/AutoGPT)
+站点：[https://www.w3.org/community/agentprotocol/](https://www.w3.org/community/agentprotocol/)
 
-### fastgpt
-FastGPT 是一个基于大型语言模型 (LLMs) 的知识型平台，提供一整套开箱即用的功能，如数据处理、RAG 检索以及可视化的 AI 工作流编排。借助 FastGPT，用户可以轻松开发和部署复杂的问答系统，而无需进行繁琐的设置或配置工作。
+草案：[https://w3c-cg.github.io/ai-agent-protocol/](https://w3c-cg.github.io/ai-agent-protocol/)
 
-github 地址：[https://github.com/labring/FastGPT](https://github.com/labring/FastGPT)
+### AAIF（Agentic AI Foundation）
 
-### BISHENG
-BISHENG 是一个面向下一代企业 AI 应用的开源 LLM DevOps 平台。其强大且全面的功能包括：生成式 AI 工作流、RAG、智能体、统一模型管理、评估、SFT、数据集管理、企业级系统管理、可观测性等。
+位于 [aaif.io](https://aaif.io) 的产业基金会，推动智能体 AI 的工程化（身份与信任、可观测性、商务、安全、工作流）。协调若干开源项目，包括 goose。
 
-github 地址：[https://github.com/dataelement/bisheng](https://github.com/dataelement/bisheng)
+站点：[https://aaif.io](https://aaif.io)
 
-## 开发框架
+### A2A（Agent2Agent Protocol）
 
-### langchain
-LangChain 是一个开发框架，专为构建基于大语言模型的应用程序设计。它提供了一套工具和组件，包括 Models（模型）、Prompts（提示）、Indexes（索引）、Memory（记忆）、Chains（链）和 Agents（代理）等。
+面向不透明智能体应用之间通信的开放协议（Agent Card、任务生命周期）。现为 Linux Foundation 项目。IBM 的 Agent Communication Protocol（ACP）已于 2025 年 8 月并入 A2A。
 
-github 地址：[https://github.com/langchain-ai/langchain](https://github.com/langchain-ai/langchain)
+github 地址：[https://github.com/a2aproject/A2A](https://github.com/a2aproject/A2A)
 
-### llama_index
-LlamaIndex（GPT Index）是一个为你的LLM应用构建的数据框架，用于将外部数据与大语言模型（LLM）结合。它支持从各种数据源（如文档、数据库等）创建索引，优化信息检索过程。
+站点：[https://a2a-protocol.org](https://a2a-protocol.org)
 
-github 地址：[https://github.com/run-llama/llama_index](https://github.com/run-llama/llama_index)
+### AGNTCY
 
-### semantic-kernel
-Semantic Kernel 是一个 SDK，旨在将大语言模型（LLM）与传统编程语言（如 C#、Python 和 Java）集成，并支持插件的自动协调。它提供了抽象层来管理 AI 服务和记忆存储，支持多种平台和向量数据库，并能自动生成并执行基于 LLM 生成的计划。
+Linux Foundation 项目，构建「智能体互联网」基础设施：跨厂商、跨框架的发现、身份、消息（SLIM）与可观测性。
 
-github 地址：[https://github.com/microsoft/semantic-kernel](https://github.com/microsoft/semantic-kernel)
+站点：[https://agntcy.org](https://agntcy.org)
+
+github 地址：[https://github.com/agntcy](https://github.com/agntcy)
+
+### AP2（Agent Payments Protocol）
+
+Google 提出的开放协议，用于智能体与商户之间安全、可互操作的支付与授权（mandate）。补充 A2A / MCP，它不是智能体间任务协议。
+
+github 地址：[https://github.com/google-agentic-commerce/AP2](https://github.com/google-agentic-commerce/AP2)
+
+# 2. 身份与信任
+
+这是开放互联网层：智能体如何证明「我是谁」、被发现，以及**跨平台**安全通信，而不依赖中心化 IdP。**ANP / `did:wba` / AgentConnect** 属于这一层，而不是放在 A2A 下面。
+
+### Agent Network Protocol（ANP）
+
+面向开放互联网的智能体身份、命名、发现、协商与协作协议套件。1.1 规范覆盖 `did:wba`、WNS 句柄、智能体描述、发现、端到端消息以及支付。与 W3C AI Agent Protocol CG 共同孵化。补充 A2A（任务）和 MCP（工具），并不替代它们。
+
+github 地址：[https://github.com/agent-network-protocol/AgentNetworkProtocol](https://github.com/agent-network-protocol/AgentNetworkProtocol)
+
+站点：[https://agent-network-protocol.com/](https://agent-network-protocol.com/)
+
+W3C CG：[https://www.w3.org/community/agentprotocol/](https://www.w3.org/community/agentprotocol/)
+
+### did:wba
+
+ANP 使用的基于 Web 的 DID 方法，用于跨平台智能体身份与认证（兼容 W3C DID，面向现有 HTTPS 基础设施）。定义在 ANP 1.1 套件中。
+
+github 地址：[https://github.com/agent-network-protocol/AgentNetworkProtocol](https://github.com/agent-network-protocol/AgentNetworkProtocol)
+
+### AgentConnect
+
+ANP 的多语言 SDK 与参考实现：`did:wba` 身份、智能体描述、发现、RPC、可验证证明以及端到端加密通信。GitHub 仓库现发布为 `anp`；历史路径 `chgaowei/AgentConnect` 与 `agent-network-protocol/AgentConnect` 会重定向到该仓库。
+
+github 地址：[https://github.com/agent-network-protocol/anp](https://github.com/agent-network-protocol/anp)
+
+主页：[https://agent-network-protocol.com/](https://agent-network-protocol.com/)
+
+### W3C Decentralized Identifiers（DID）
+
+W3C 去中心化标识符标准。ANP 的 `did:wba` 是一种 DID method；许多智能体身份方案复用 DID / VC，而不是另起一套 ID。
+
+规范：[https://www.w3.org/TR/did/](https://www.w3.org/TR/did/)
+
+github 地址：[https://github.com/w3c/did](https://github.com/w3c/did)
+
+# 3. 智能体间协议
+
+ANP 与 A2A 是**分层**，不是竞品：ANP 覆盖开放互联网上的身份与发现；A2A 覆盖不透明智能体之间的结构化任务交换（通常在平台内，或在身份已经建立之后）。
+
+### Agent Network Protocol（ANP）
+
+见[身份与信任](#2-身份与信任)。在应用层，ANP 定义智能体描述与发现，使异构智能体可以找到并调用彼此。
+
+github 地址：[https://github.com/agent-network-protocol/AgentNetworkProtocol](https://github.com/agent-network-protocol/AgentNetworkProtocol)
+
+### A2A
+
+见[标准组织](#1-标准组织与工作组)。当你需要共享的任务模型（提交 / 执行 / 完成）以及现有运行时之间的 Agent Card 时使用 A2A。
+
+github 地址：[https://github.com/a2aproject/A2A](https://github.com/a2aproject/A2A)
+
+站点：[https://a2a-protocol.org](https://a2a-protocol.org)
+
+# 4. 智能体到工具 / MCP
+
+### Model Context Protocol（MCP）
+
+连接 LLM 应用与外部工具、数据和提示词的开放协议。2026 年事实上的工具层；与 ANP（身份）和 A2A（任务）互补。
+
+站点：[https://modelcontextprotocol.io](https://modelcontextprotocol.io)
+
+规范仓库：[https://github.com/modelcontextprotocol/modelcontextprotocol](https://github.com/modelcontextprotocol/modelcontextprotocol)
+
+官方 servers：[https://github.com/modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers)
+
+GitHub 组织：[https://github.com/modelcontextprotocol](https://github.com/modelcontextprotocol)
+
+### MCP servers
+
+参考与社区 MCP server 实现（文件系统、git、浏览器、SaaS 连接器等）。
+
+github 地址：[https://github.com/modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers)
+
+### MCP Registry
+
+公开 MCP server 的官方元数据注册表（预览）。供客户端和市场发现服务。
+
+注册表：[https://registry.modelcontextprotocol.io](https://registry.modelcontextprotocol.io)
+
+### goose
+
+Block 出品、现托管于 AAIF 的开源可扩展智能体，可安装、执行、编辑并用任意 LLM 做测试。偏 MCP 原生的本机/编码智能体。
+
+github 地址：[https://github.com/block/goose](https://github.com/block/goose)（当前仓库：[https://github.com/aaif-goose/goose](https://github.com/aaif-goose/goose)）
+
+### AGENTS.md
+
+简单开放的 Markdown 格式，用于在仓库内指导编码智能体（约定、命令、注意事项）。与 MCP 互补：它是项目本地说明，不是工具协议。
+
+github 地址：[https://github.com/agentsmd/agents.md](https://github.com/agentsmd/agents.md)
+
+站点：[https://agents.md](https://agents.md)
+
+### agentgateway
+
+面向 AI 智能体和 MCP server 的开源代理/网关（路由、策略、工具前的连接）。
+
+github 地址：[https://github.com/agentgateway/agentgateway](https://github.com/agentgateway/agentgateway)
+
+# 5. 智能体到用户 / UI
+
+### AG-UI
+
+Agent-User Interaction Protocol：轻量事件协议，把智能体后端接到面向用户的应用（流式文本、工具调用、共享状态、人在环）。补充 MCP（工具）和 A2A（智能体协作）。
+
+github 地址：[https://github.com/ag-ui-protocol/ag-ui](https://github.com/ag-ui-protocol/ag-ui)
+
+### A2UI
+
+Agent-to-User Interface 协议（Google，与 CopilotKit 等合作）：智能体发送声明式 UI 描述，客户端用原生组件渲染，而不是下发可执行 UI 代码。常承载于 AG-UI 或 A2A 流中。
+
+站点：[https://a2ui.org](https://a2ui.org)
+
+# 6. 智能体到客户端 / IDE
+
+**不是 A2A。不是 IBM ACP。** Zed 的 Agent Client Protocol（同样缩写 ACP）是编辑器与编码智能体之间的协议。
+
+### Agent Client Protocol（Zed ACP）
+
+用于将任意编辑器/IDE 连接到任意编码智能体。起源于 Zed；规范仓库现位于 `agentclientprotocol` 组织。不要与已并入 A2A 的 IBM ACP，或 OpenAI/Stripe 的 Agentic Commerce Protocol 混淆。
+
+github 地址：[https://github.com/zed-industries/agent-client-protocol](https://github.com/zed-industries/agent-client-protocol)（当前仓库：[https://github.com/agentclientprotocol/agent-client-protocol](https://github.com/agentclientprotocol/agent-client-protocol)）
+
+# 7. 商务与支付
+
+短节：智能体如何支付与结账。这不是身份层，也不是 A2A。
+
+### AP2（Agent Payments Protocol）
+
+见[标准组织](#1-标准组织与工作组)。面向智能体购买的授权/支付层。
+
+github 地址：[https://github.com/google-agentic-commerce/AP2](https://github.com/google-agentic-commerce/AP2)
+
+### Agentic Commerce Protocol（OpenAI / Stripe）
+
+开放标准（同样缩写 **ACP**），连接买家、其智能体与商家完成购买。由 OpenAI 与 Stripe 维护。与 IBM ACP、Zed ACP 无关。
+
+github 地址：[https://github.com/agentic-commerce-protocol/agentic-commerce-protocol](https://github.com/agentic-commerce-protocol/agentic-commerce-protocol)
+
+
+# 8. 框架与编排
+
+LangChain 仍被广泛使用；该家族中的**智能体运行时是 LangGraph**。微软现在的默认选择是 **Microsoft Agent Framework**（AutoGen 与 Semantic Kernel 见历史分类）。Phidata 已更名为 **Agno**。
+
+### OpenAI Agents SDK
+
+轻量 Python SDK，用于在 OpenAI 模型上构建智能体与多智能体工作流（handoff、工具、tracing）。
+
+github 地址：[https://github.com/openai/openai-agents-python](https://github.com/openai/openai-agents-python)
+
+### Google ADK（Agent Development Kit）
+
+代码优先的 Python 工具包，用于构建、评估与部署智能体，并与 Gemini、A2A、MCP、Vertex 深度集成。
+
+github 地址：[https://github.com/google/adk-python](https://github.com/google/adk-python)
+
+### Claude Agent SDK
+
+Anthropic 的 Python SDK，用于基于 Claude 构建智能体（工具、会话、类似 Claude Code 的 harness 模式）。
+
+github 地址：[https://github.com/anthropics/claude-agent-sdk-python](https://github.com/anthropics/claude-agent-sdk-python)
+
+### Microsoft Agent Framework
+
+微软用于构建、编排和部署智能体及多智能体工作流的生产级框架（Python 与 .NET）。AutoGen 与 Semantic Kernel 的后续路径。
+
+github 地址：[https://github.com/microsoft/agent-framework](https://github.com/microsoft/agent-framework)
 
 ### LangGraph
-LangGraph是一个用于构建具有状态和多角色应用程序的库，主要用于创建智能体和多智能体工作流。与其他LLM框架相比，它提供了三个核心优势：循环、可控性和持久性。LangGraph允许你定义包含循环的工作流，这是大多数智能体架构所必需的，这使得它与基于DAG（有向无环图）的解决方案有所区别。
+
+用于有状态、含循环的智能体与多智能体应用的库（循环、可控性、持久化）。这是 LangChain 家族的智能体运行时；做智能体时优先用它而不是原始 chain。
 
 github 地址：[https://github.com/langchain-ai/langgraph](https://github.com/langchain-ai/langgraph)
 
-### phidata
-Phidata 是一个用于构建智能体系统的框架，允许工程师创建具备记忆、知识、工具和推理能力的智能体。它支持构建能够协同工作的智能体团队，并通过美观的用户界面与智能体进行交互。Phidata 还提供监控、评估和优化智能体的功能，并帮助开发包含 API、数据库和向量数据库的智能体应用。
+### LangChain
 
-github 地址：[https://github.com/phidatahq/phidata](https://github.com/phidatahq/phidata)
+通用 LLM 应用框架（模型、提示、检索、工具）。仍是许多栈的集成面；智能体场景请用 LangGraph。
 
-### haystack
-AI 编排框架，用于构建可定制、生产就绪的大语言模型（LLM）应用程序。将组件（模型、向量数据库、文件转换器）连接到可以与数据互动的管道或智能体。通过先进的检索方法，它最适合用于构建 RAG（检索增强生成）、问答、语义搜索或对话智能体聊天机器人。
+github 地址：[https://github.com/langchain-ai/langchain](https://github.com/langchain-ai/langchain)
+
+### LlamaIndex
+
+把 LLM 接到私有数据的数据框架（索引、检索、智能体式 RAG 工作流）。
+
+github 地址：[https://github.com/run-llama/llama_index](https://github.com/run-llama/llama_index)
+
+### Agno（原 phidata）
+
+用于构建多模态智能体与智能体团队的 Python 框架，带记忆、知识与工具。Phidata 于 2025 年更名为 Agno；旧仓库 `phidatahq/phidata` 会重定向到这里。
+
+github 地址：[https://github.com/agno-agi/agno](https://github.com/agno-agi/agno)
+
+### Pydantic AI
+
+Pydantic 团队的带类型 Python 智能体框架：智能体、工具、以及基于 Pydantic 模型的结构化输出。
+
+github 地址：[https://github.com/pydantic/pydantic-ai](https://github.com/pydantic/pydantic-ai)
+
+### Mastra
+
+面向 AI 应用与智能体的 TypeScript 框架（工作流、工具、评测与可观测性）。
+
+github 地址：[https://github.com/mastra-ai/mastra](https://github.com/mastra-ai/mastra)
+
+### Qwen-Agent
+
+基于 Qwen（>=3.0）的智能体框架与应用：函数调用、MCP、代码解释器、RAG、Chrome 扩展。
+
+github 地址：[https://github.com/QwenLM/Qwen-Agent](https://github.com/QwenLM/Qwen-Agent)
+
+### Strands
+
+用于生产智能体的开源 SDK（Python 与 TypeScript），模型与云无关。`sdk-python` 仓库现重定向到 `harness-sdk`。
+
+github 地址：[https://github.com/strands-agents/sdk-python](https://github.com/strands-agents/sdk-python)
+
+### Haystack
+
+生产级 LLM 应用的管道/智能体编排：把模型、转换器、向量库连成 RAG、问答与智能体。
 
 github 地址：[https://github.com/deepset-ai/haystack](https://github.com/deepset-ai/haystack)
 
-## 多智能体框架
+### DSPy
 
-### crewai
-CrewAI 是一个多智能体框架，旨在通过协调多个AI智能体协作，完成复杂的任务和工作流。该框架通过任务管理和流程控制，允许用户定义和执行自动化的智能体协作。
-
-github 地址：[https://github.com/crewAIInc/crewAI](https://github.com/crewAIInc/crewAI)
-
-### Autogen
-AutoGen 是一个开源框架，用于构建AI智能体系统。它简化了事件驱动、分布式、可扩展和具备韧性的智能体应用程序的创建。AutoGen 允许快速构建系统，在这些系统中，AI智能体能够协作并自主执行任务，或者在人工监督下完成任务。
-
-github 地址：[https://github.com/microsoft/autogen](https://github.com/microsoft/autogen)
-
-### Camel
-CAMEL是最早基于大语言模型（LLM）的多智能体框架之一，现已成为一个通用的框架，用于构建和使用基于LLM的智能体解决现实世界中的任务。
-
-github 地址：[https://github.com/camel-ai/camel](https://github.com/camel-ai/camel)
-
-### Magentic-One
-Magentic-One 是一个高性能的通用智能体系统，旨在解决复杂任务。它采用多智能体架构，其中主智能体“协调者”（Orchestrator）负责指挥其他四个专门的智能体来完成任务。协调者负责规划、跟踪进展，并在出现错误时重新规划，同时指导这些专门的智能体执行如操作网页浏览器、浏览本地文件或编写和执行Python代码等任务。
-
-github 地址：[https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one](https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one)
-
-### MetaGPT
-MetaGPT 以一行需求作为输入，输出用户故事/竞争分析/需求/数据结构/API/文档等。MetaGPT 包括产品经理 / 架构师 / 项目经理 / 工程师。它提供了软件公司的整个过程以及精心编排的 SOP。
-
-github 地址：[https://github.com/geekan/MetaGPT](https://github.com/geekan/MetaGPT)
-
-## 构建工具
-
-### AgentOps
-用于 AI 代理监控、LLM 成本跟踪、基准测试等的 Python SDK。与大多数 LLM 和代理框架（如 CrewAI、Langchain 和 Autogen）集成。
-
-github 地址：[https://github.com/AgentOps-AI/agentops](https://github.com/AgentOps-AI/agentops)
-
-### langfuse
-Langfuse 是一个开源 LLM 工程平台：LLM 可观测性、指标、评估、提示管理、Playground、数据集。与 LlamaIndex、Langchain、OpenAI SDK、LiteLLM 等集成
-
-github 地址：[https://github.com/langfuse/langfuse](https://github.com/langfuse/langfuse)
-
-### AgentStack
-AgentStack 开让你从命令行创建 AI 代理项目，它是启动代理项目的绝佳工具，并提供了许多 CLI 实用程序，用于在整个开发过程中轻松生成代码。
-
-github 地址：[https://github.com/AgentOps-AI/AgentStack](https://github.com/AgentOps-AI/AgentStack)
-
-### dspy
-DSPy 是由斯坦福大学开发的一个开源框架，旨在优化语言模型（LLM）的使用，它通过将声明式的语言模型调用转换为自我优化的管道来工作。与手动编写每个任务的特定提示不同，DSPy 允许用户定义高级目标和度量，框架会自动优化 LLM 的性能。
+斯坦福框架，把声明式语言模型程序变成可自优化的管道，而不是手写提示词。
 
 github 地址：[https://github.com/stanfordnlp/dspy](https://github.com/stanfordnlp/dspy)
 
-### phoenix
-Phoenix 是一个开源的 AI 可观察性平台，主要用于实验、评估和故障排除，支持追踪 LLM 应用程序的运行时、基准测试性能并创建版本化的数据集。它支持跟踪对提示、LLM 和检索方式的改动，并兼容多个框架和 LLM 提供商。
+### Inngest
 
-github 地址：[https://github.com/Arize-ai/phoenix](https://github.com/Arize-ai/phoenix)
-
-## 有特色的代理
-
-### TEN-Agent
-TEN Agent 是与 OpenAI Realtime API、RTC 集成的世界级多模态 AI 代理，具有天气检查、网络搜索、视觉和 RAG 功能。它将 OpenAI Realtime API 的超低延迟与 RTC 的 AI 噪声抑制相结合，确保流畅、高质量的交互。如果要构建实时通话代理可以考虑使用。
-
-github 地址：[https://github.com/TEN-framework/TEN-Agent](https://github.com/TEN-framework/TEN-Agent)
-
-# 规划
-
-## 工作流编排
-
-### inngest
-Inngest 是一个领先的工作流编排平台，可在无服务器架构、服务器或边缘设备上运行有状态的步骤函数和 AI 工作流。
+工作流编排平台，可在无服务器、服务器或边缘上运行有状态步骤函数和 AI 工作流。
 
 github 地址：[https://github.com/inngest/inngest](https://github.com/inngest/inngest)
 
-### prefect
-Prefect 是一个用于构建 Python 数据管道的工作流编排框架。它是将脚本提升为可靠生产工作流的最简单方式。通过 Prefect，用户可以构建具有弹性和动态响应能力的数据管道，能够适应外部变化并从意外情况中恢复。
+### Prefect
+
+Python 工作流编排：把脚本变成可重试、可适应的生产管道。
 
 github 地址：[https://github.com/PrefectHQ/prefect](https://github.com/PrefectHQ/prefect)
 
-# 记忆
+### TEN-Agent
 
-## 记忆引擎
+开源实时多模态/语音智能体框架（RTC + 低延迟对话）。GitHub 仓库已更名为 `ten-framework`；`TEN-Agent` 路径会重定向。
+
+github 地址：[https://github.com/TEN-framework/ten-framework](https://github.com/TEN-framework/ten-framework)  
+（历史路径 `TEN-Agent` 会重定向到此仓库；产品名仍称 TEN-Agent）
+
+### AgentStack
+
+从命令行启动 AI 智能体项目并生成样板代码的 CLI。GitHub 组织现为 `agentstack-ai`。
+
+github 地址：[https://github.com/agentstack-ai/AgentStack](https://github.com/agentstack-ai/AgentStack)
+
+# 9. 多智能体
+
+简写：新工作大多发生在 **LangGraph**、**Microsoft Agent Framework** 或 **CrewAI** 中。下面是仍值得了解的专用多智能体项目。
+
+### CrewAI
+
+基于角色的多智能体框架：定义智能体、任务与流程，让多个智能体协作完成工作流。
+
+github 地址：[https://github.com/crewAIInc/crewAI](https://github.com/crewAIInc/crewAI)
+
+### CAMEL
+
+早期基于 LLM 的多智能体框架，已发展为构建与研究通信智能体的通用工具包。
+
+github 地址：[https://github.com/camel-ai/camel](https://github.com/camel-ai/camel)
+
+### MetaGPT
+
+多智能体「软件公司」模式：一行需求输入，产出 PM / 架构师 / 工程师等角色与 SOP。
+
+github 地址：[https://github.com/FoundationAgents/MetaGPT](https://github.com/FoundationAgents/MetaGPT)
+
+另见：[LangGraph](#langgraph)、[Microsoft Agent Framework](#microsoft-agent-framework)、[Agno](#agno原-phidata)。
+
+# 10. 记忆与 RAG
 
 ### mem0
-Mem0 是一个增强 AI 助手和代理的智能内存层，能够实现个性化交互并持续改进，适用于客户支持聊天机器人、AI 助手和自治系统。它通过混合数据库方法管理长期记忆，确保个性化信息存储高效且搜索迅速，提升 AI 代理的响应个性化和相关性。
+
+助手与智能体的记忆层：存储并检索长期个性化事实，使跨会话回复保持相关。
 
 github 地址：[https://github.com/mem0ai/mem0](https://github.com/mem0ai/mem0)
 
-### DB-GPT
-DB-GPT 是一个开源的 AI 原生数据应用开发框架，集成了 AWEL（Agentic Workflow Expression Language）和多智能体技术。其目标是通过开发多项技术能力（如多模型管理 SMMF、Text2SQL 效果优化、RAG 框架优化、多智能体框架协作以及 AWEL 的代理工作流编排等），构建大模型领域的基础设施，从而使数据驱动的大模型应用更加简单和便捷。
+### Graphiti
 
-github 地址：[https://github.com/eosphoros-ai/DB-GPT](https://github.com/eosphoros-ai/DB-GPT)
+面向 AI 智能体的实时知识图谱（来自持续活动的时序图记忆，而不是只做批处理 GraphRAG）。
 
-### Letta（原MemGPT）
-Letta 是一个用于构建有状态 LLM 应用程序的框架，支持个性化聊天机器人、数据驱动代理和自动化 AI 工作流。它允许应用保持长期记忆并连接外部数据源，适用于需要持续交互和动态更新的应用场景。
+github 地址：[https://github.com/getzep/graphiti](https://github.com/getzep/graphiti)
+
+### Letta（原 MemGPT）
+
+用于有状态 LLM 智能体的框架：长期记忆、自管理上下文，以及连接外部数据。
 
 github 地址：[https://github.com/letta-ai/letta](https://github.com/letta-ai/letta)
 
 ### RAGFlow
-RAGFlow 是一款基于深度文档理解构建的开源 RAG（Retrieval-Augmented Generation）引擎。RAGFlow 可以为各种规模的企业及个人提供一套精简的 RAG 工作流程，结合大语言模型（LLM）针对用户各类不同的复杂格式数据提供可靠的问答以及有理有据的引用。
+
+基于深度文档理解的开源 RAG 引擎，能为复杂企业文件提供带引用的问答。
 
 github 地址：[https://github.com/infiniflow/ragflow](https://github.com/infiniflow/ragflow)
 
 ### Cognee
-Cognee 实现了可扩展、模块化的 ECL（Extract, Cognify, Load）流水线，能够帮助用户互联和检索过往对话、文档以及音频转录内容，同时减少幻觉、开发工作量和成本。
+
+ECL（Extract, Cognify, Load）流水线，把对话、文档和转写变成可检索的记忆图。
 
 github 地址：[https://github.com/topoteretes/cognee](https://github.com/topoteretes/cognee)
 
-### KnowledgeTable
-Knowledge Table 是一个开源软件包，旨在简化从非结构化文档中提取和探索结构化数据的过程。
+### DB-GPT
 
-github 地址：[https://github.com/whyhow-ai/knowledge-table](https://github.com/whyhow-ai/knowledge-table)
+AI 原生数据应用框架：Text2SQL、RAG、多模型管理，以及面向数据库的 AWEL 智能体工作流编排。
 
-## GraphRAG技术
+github 地址：[https://github.com/eosphoros-ai/DB-GPT](https://github.com/eosphoros-ai/DB-GPT)
 
-### graphrag
-GraphRAG 项目是一个数据管道和转换套件，旨在利用 LLM 的强大功能从非结构化文本中提取有意义的结构化数据。
+### GraphRAG
+
+微软数据管道，用 LLM 从非结构化文本抽取知识图谱以供检索。
 
 github 地址：[https://github.com/microsoft/graphrag](https://github.com/microsoft/graphrag)
 
 ### fast-graphrag
-Fast GraphRAG 是一个精简且可提示的框架，旨在为代理驱动的检索工作流提供可解释、高精度的解决方案。它设计用于高效、低成本的操作，支持动态数据生成和增量更新，并能够无缝集成到现有的检索管道中。
+
+精简、可增量更新的 GraphRAG 风格检索，面向智能体工作流（可解释、更低成本更新）。
 
 github 地址：[https://github.com/circlemind-ai/fast-graphrag](https://github.com/circlemind-ai/fast-graphrag)
 
 ### LightRAG
-LightRAG 是一个简单快速的 RAG 引擎。
+
+简单、快速的图增强 RAG 引擎。
 
 github 地址：[https://github.com/HKUDS/LightRAG](https://github.com/HKUDS/LightRAG)
 
 ### nano-graphrag
-nano-graphrag 提供了一个更小、更快、更干净的 GraphRAG，同时保留了核心功能。GraphRAG 很好而且功能强大，但官方实现很难阅读或破解。
+
+更小、更好改的 GraphRAG 实现，保留核心思路、去掉官方仓库的重量。
 
 github 地址：[https://github.com/gusye1234/nano-graphrag](https://github.com/gusye1234/nano-graphrag)
 
-
-## 存储
-
 ### Milvus
-Milvus 是一个为大规模设计的高性能向量数据库，AI 应用可使用它进行存储和搜索大量非结构化数据，如文本、图像和多模态信息。
+
+面向大规模的高性能开源向量数据库，用于存储和检索 embedding。
 
 github 地址：[https://github.com/milvus-io/milvus](https://github.com/milvus-io/milvus)
 
 ### Weaviate
-Weaviate 是一个开源向量数据库，能够同时存储对象和向量，支持将向量搜索与结构化过滤相结合，并具有云原生数据库的容错性和可扩展性。
+
+开源向量数据库：同时存储对象与向量，支持向量检索加结构化过滤，云原生运维。
 
 github 地址：[https://github.com/weaviate/weaviate](https://github.com/weaviate/weaviate)
 
 ### Chroma
-Chroma 是一个AI 原生开源嵌入数据库。
+
+AI 原生开源 embedding 数据库，常作为 RAG 的本地/开发向量库。
 
 github 地址：[https://github.com/chroma-core/chroma](https://github.com/chroma-core/chroma)
 
-# 工具
 
-## 网络与通信
-
-### AgentConnect
-AgentConnect 的愿景是定义智能体的连接方式，并为数十亿智能体构建一个开放、安全和高效的协作网络。AgentConnect提供以下能力：
-- 基于W3C DID规范提供了一个去中心化的身份认证方式，可以让智能体掌握自己的身份，并且与其他任意智能体进行跨平台的、安全的、低成本的身份验证。
-- 支持基于DID的端到端加密通信，确保智能体之间的通信安全。
-- 支持元协议协商，允许智能体之间使用自然语言协商双方能力以及通信协议，并且使用LLM生成代码进行协议通信。这有助于实现自组织自协商的智能体网络。
-- 支持应用层协议管理，可以方便的对协议以及协议代码进行加载、更新、卸载，有助于提高智能体之间的通信效率。
-
-github 地址：[https://github.com/chgaowei/AgentConnect](https://github.com/chgaowei/AgentConnect)
-
-### AgentNetworkProtocol
-AgentNetworkProtocol（ANP）是专为智能体网络设计的开放协议框架，旨在建立一个开放、安全、高效、自组织、自协商的智能体协作网络。它总共分为三层，分别是身份与加密通信层、元协议层、应用协议层。AgentConnect是AgentNetworkProtocol的开源实现。
-
-github 地址：[https://github.com/chgaowei/AgentNetworkProtocol](https://github.com/chgaowei/AgentNetworkProtocol)
-
-### Agora Protocol
-Agora Protocol Agora 是一个简单的跨平台协议，允许异构 LLM 之间进行高效的通信。它先使用自然语言进行协商通信协议，然后使用通信协议进行通信。
-
-github 地址：[https://github.com/agora-protocol/paper-demo](https://github.com/agora-protocol/paper-demo)
-
-### agent-protocol
-agent-protocol 用于与 AI 智能体交互的通用接口。该协议与技术堆栈无关 - 您可以将其与任何框架一起使用来构建代理。它目前构建的是智能体与智能体使用者之间的通信协议。不过现在长时间未更新。
-
-github 地址：[https://github.com/AI-Engineer-Foundation/agent-protocol](https://github.com/AI-Engineer-Foundation/agent-protocol)
-
-### naptha-sdk
-Naptha 使用户能够构建去中心化的多代理工作流。去中心化工作流可以在一个或多个节点（而不是一个中央服务器）上运行，具有不同的 LLM 和许多本地数据源。
-
-github 地址：[https://github.com/NapthaAI/naptha-sdk](https://github.com/NapthaAI/naptha-sdk)
-
-### modelcontextprotocol
-模型上下文协议（MCP）是一种开放协议，它能够实现大型语言模型（LLM）应用程序与外部数据源及工具之间的无缝集成。无论你是在构建一个由人工智能驱动的集成开发环境（IDE），增强聊天界面，还是创建定制的人工智能工作流程，模型上下文协议都提供了一种标准化的方式，将大型语言模型与它们所需的上下文连接起来。
-github 地址：[https://github.com/modelcontextprotocol](https://github.com/modelcontextprotocol)
-
-## computer use API
-
-### npi
-NPINPi 是一个开源平台，提供工具使用 API，使 AI 代理能够在虚拟世界中采取行动, 使 AI 代理能够操作各种软件工具和应用程序并与之交互，允许大型语言模型通过函数调用与现有软件和应用程序生态系统无缝集成。NPi 充当这些模型访问虚拟世界的网关。
-
-github 地址：[https://github.com/npi-ai/npi](https://github.com/npi-ai/npi)
-
-## 身份验证
-
-### AgentConnect
-AgentConnect 提供了基于W3C DID规范的智能体身份认证方法，并支持基于DID的端到端加密通信。
-
-github 地址：[https://github.com/chgaowei/AgentConnect](https://github.com/chgaowei/AgentConnect)
-
-## 运行时
-
-### E2B
-E2B 是一种开源基础设施，允许您在云中的安全隔离沙箱中运行 AI 生成的代码。
-
-github 地址：[https://github.com/e2b-dev/E2B](https://github.com/e2b-dev/E2B)
-
-### SandBase Harness
-SandBase Harness 是一个本地优先的 TypeScript AI Agent Runtime，提供持久化会话、沙箱工具执行、MCP 集成、记忆、凭据隔离、审计日志和执行回放，支持本地、Docker、Kubernetes 以及自托管部署。
-
-github 地址：[https://github.com/sandbaseai/sandbase-harness](https://github.com/sandbaseai/sandbase-harness)
-
-## 网页浏览
+# 11. 浏览器与计算机使用
 
 ### Scrapeless
-Scrapeless Scraping Browser 为 AI Agent 提供高并发、低成本的数据采集能力，原生支持 Puppeteer/Playwright，具备应对 reCAPTCHA、Cloudflare 等防护机制的能力，可处理动态交互页面，是构建自动化智能体的理想基础设施。
+
+社区 PR：面向智能体的网页数据采集相关开源组织，提供 SDK 与配套仓库。
 
 github 地址：[https://github.com/scrapeless-ai](https://github.com/scrapeless-ai)
 
+### browser-use
+
+把 LLM 智能体接到网页上的流行开源项目。
+
+github 地址：[https://github.com/browser-use/browser-use](https://github.com/browser-use/browser-use)
+
+### Skyvern
+
+用 LLM 驱动网站工作流的开源项目。
+
+github 地址：[https://github.com/Skyvern-AI/skyvern](https://github.com/Skyvern-AI/skyvern)
+
+### Open-AutoGLM
+
+智谱（Z.ai）开源的手机智能体模型与框架。
+
+github 地址：[https://github.com/zai-org/Open-AutoGLM](https://github.com/zai-org/Open-AutoGLM)
+
 ### Crawlee
-Crawlee 是一个用于构建可靠爬虫的 Node.js 网络爬取和浏览器自动化库，支持 JavaScript 和 TypeScript。它可以提取 AI、LLM、RAG 或 GPT 所需的数据，从网站下载 HTML、PDF、JPG、PNG 等文件。
+
+用于构建可靠网页采集器的 Node.js 库（JS/TS），可向 RAG / LLM 管道提供数据。
 
 github 地址：[https://github.com/apify/crawlee](https://github.com/apify/crawlee)
 
 ### Browserless
-Browserless 允许远程客户端连接并执行无头工作，所有操作都在 Docker 环境中进行。它支持标准的、未修改的 Puppeteer 和 Playwright 库，并提供基于 REST 的 API，用于执行常见操作，如数据收集、PDF 生成等。
+
+基于 Docker 的 Chrome 服务，提供截图、PDF 与页面提取等 REST API。
 
 github 地址：[https://github.com/browserless/browserless](https://github.com/browserless/browserless)
 
 ### AgentQL
-AgentQL 是一种 AI 驱动的查询语言，用于抓取网站和自动化工作流程。它使用自然语言查询来精确定位任何网页上的数据和元素，包括经过身份验证和动态生成的内容。
+
+用自然语言查询定位页面上的数据与元素，包括需登录和动态生成的内容。
 
 github 地址：[https://github.com/tinyfish-io/agentql](https://github.com/tinyfish-io/agentql)
+
+# 12. 运行时、沙箱与网关
+
+### Daytona
+
+用于在隔离环境中运行 AI 生成代码的安全、弹性基础设施。
+
+github 地址：[https://github.com/daytonaio/daytona](https://github.com/daytonaio/daytona)
+
+### E2B
+
+开源基础设施，可在云中的隔离沙箱里运行 AI 生成的代码。
+
+github 地址：[https://github.com/e2b-dev/E2B](https://github.com/e2b-dev/E2B)
+
+### SandBase Harness
+
+本地优先的 TypeScript AI Agent Runtime：持久化会话、沙箱工具执行、MCP、记忆、凭据隔离、审计日志与执行回放。支持本地、Docker、Kubernetes 以及自托管部署。
+
+github 地址：[https://github.com/sandbaseai/sandbase-harness](https://github.com/sandbaseai/sandbase-harness)
+
+# 13. 可观测性与评测
+
+LangSmith 是 LangChain 的**商业**产品（追踪、数据集、评测），此处不作为开源项目列出。开源栈优先考虑 Langfuse / Phoenix / OTel。
+
+### Langfuse
+
+开源 LLM 工程平台：追踪、指标、评测、提示管理、Playground、数据集。可与 LangChain、LlamaIndex、OpenAI SDK 等集成。
+
+github 地址：[https://github.com/langfuse/langfuse](https://github.com/langfuse/langfuse)
+
+### Phoenix
+
+Arize 的开源 AI 可观测性平台：追踪、评测、数据集，以及 LLM/智能体应用排障。
+
+github 地址：[https://github.com/Arize-ai/phoenix](https://github.com/Arize-ai/phoenix)
+
+### AgentOps
+
+用于智能体监控、LLM 成本跟踪和基准测试的 Python SDK；可与 CrewAI、LangChain、AutoGen 等集成。
+
+github 地址：[https://github.com/AgentOps-AI/agentops](https://github.com/AgentOps-AI/agentops)
+
+### OpenTelemetry GenAI semantic conventions
+
+生成式 AI / 智能体工作负载的语义约定，使追踪可跨厂商互操作。
+
+github 地址：[https://github.com/open-telemetry/semantic-conventions-genai](https://github.com/open-telemetry/semantic-conventions-genai)
+
+# 14. 可视化 / 低代码平台
+
+### n8n
+
+Fair-code 工作流自动化，带原生 AI 节点：可视化搭建加上自定义代码，可自托管或上云。
+
+github 地址：[https://github.com/n8n-io/n8n](https://github.com/n8n-io/n8n)
+
+### Coze Studio
+
+扣子团队开源的可视化 AI 智能体开发平台（创建、调试、部署）。
+
+github 地址：[https://github.com/coze-dev/coze-studio](https://github.com/coze-dev/coze-studio)
+
+### Dify
+
+开源 LLM 应用开发平台：可视化 AI 工作流、RAG、智能体、模型管理与可观测性，从原型到生产。
+
+github 地址：[https://github.com/langgenius/dify](https://github.com/langgenius/dify)
+
+### FastGPT
+
+基于 LLM 的知识库平台：数据处理、RAG 检索以及可视化 AI 工作流编排，便于部署问答系统。
+
+github 地址：[https://github.com/labring/FastGPT](https://github.com/labring/FastGPT)
+
+### BISHENG
+
+面向企业 AI 应用的开源 LLM DevOps 平台：工作流、RAG、智能体、统一模型管理、评估、SFT 与可观测性。
+
+github 地址：[https://github.com/dataelement/bisheng](https://github.com/dataelement/bisheng)
+
+# 15. 历史 / 归档 / 维护模式
+
+保留以便旧书签仍能找到。新项目请优先使用上文 2026 年的替代方案。
+
+### AutoGPT
+
+早期自主智能体平台，后来增加了工作流。有历史意义；新的智能体工作大多已转到上文框架。
+
+github 地址：[https://github.com/Significant-Gravitas/AutoGPT](https://github.com/Significant-Gravitas/AutoGPT)
+
+### AutoGen
+
+微软多智能体框架。新开发请使用 **Microsoft Agent Framework**；仅存量应用继续用 AutoGen。迁移指南见 MAF 文档。
+
+github 地址：[https://github.com/microsoft/autogen](https://github.com/microsoft/autogen)
+
+### Semantic Kernel
+
+微软用于把 LLM 与 C# / Python / Java 插件结合的 SDK。后续路径是 **Microsoft Agent Framework**；SK 处于维护支持。
+
+github 地址：[https://github.com/microsoft/semantic-kernel](https://github.com/microsoft/semantic-kernel)
+
+### Magentic-One
+
+通用多智能体系统（协调者 + 专长智能体），以 AutoGen 包形式发布。偏研究/参考，不是 2026 默认栈。
+
+github 地址：[https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one](https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one)
+
+### npi
+
+早期的工具网关 API，让智能体可以操作各类软件。原 `npi-ai/npi` 现重定向到 `sheet0/npi`；2025 年后鲜有更新。更推荐 MCP 与现代运行时。
+
+github 地址：[https://github.com/sheet0/npi](https://github.com/sheet0/npi)
+
+### agent-protocol（AI Engineer Foundation）
+
+早期与智能体交互的 HTTP 通用接口，与技术栈无关。长期未更新；仓库现重定向到 `agi-inc/agent-protocol`。实践中已被 A2A / MCP / AG-UI 取代。
+
+github 地址：[https://github.com/agi-inc/agent-protocol](https://github.com/agi-inc/agent-protocol)
+
+### Agora Protocol
+
+论文演示协议：先用自然语言协商通信方案，再切换到约定协议。研究产物，不是生产标准。
+
+github 地址：[https://github.com/agora-protocol/paper-demo](https://github.com/agora-protocol/paper-demo)
+
+### naptha-sdk
+
+用于在异构节点与模型上构建去中心化多智能体工作流的 SDK。2025 年后公开活动很少，仅作参考保留。
+
+github 地址：[https://github.com/NapthaAI/naptha-sdk](https://github.com/NapthaAI/naptha-sdk)
+
+### phidata（已更名）
+
+Phidata 于 2025 年更名为 **Agno**。请不要在旧名称下开始新工作。
+
+github 地址：[https://github.com/phidatahq/phidata](https://github.com/phidatahq/phidata) -> [https://github.com/agno-agi/agno](https://github.com/agno-agi/agno)
+
+### KnowledgeTable（已失效）
+
+曾用于从非结构化文档提取结构化表格。原仓库 `whyhow-ai/knowledge-table` 现已 **404**，从在列清单中移除。
+
+原 github 地址：[https://github.com/whyhow-ai/knowledge-table](https://github.com/whyhow-ai/knowledge-table)（404）
