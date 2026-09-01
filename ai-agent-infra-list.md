@@ -1,24 +1,18 @@
-
 The Most Comprehensive Collection of AI Agent Infrastructure Open Source Projects [Continuously Updated]
 
 # Introduction
 
-The importance of AI Agents is an industry consensus, with the current biggest bottleneck being model capabilities, especially model reasoning abilities. However, with the release of o1, perhaps we can shift some attention to other bottlenecks. This is the original intention behind writing this article.
+The importance of AI Agents is an industry consensus. By 2026 the bottleneck is no longer only model quality: it is how agents **identify one another**, **call tools**, **delegate tasks**, **talk to users**, and **run safely**. This list covers that layered stack — not the models themselves.
 
-The AI Agent Infrastructure discussed in this article does not include models, but rather focuses on other infrastructure components besides models, such as memory, tools, frameworks, containers, etc.
-
-The reason for writing this article is that I often come across excellent open source projects but have no place to record them. Sometimes when looking for an open source project, it's difficult to find. Therefore, this article has three purposes:
+This article has three purposes:
 
 - To have a place to record excellent and creative open source projects
-
 - To help AI Agent developers quickly find suitable infrastructure
-
 - To help AI Agent developers quickly understand the current state of AI Agent infrastructure development
-
 
 For now, we only collect open source projects, though we may include commercial products in the future.
 
-I will continuously update this article, perhaps once a month, adding excellent and creative projects each time. Additionally, I plan to maintain this article as an open source project. I have created a GitHub repository at: [https://github.com/chgaowei/ai-agent-infra-list](https://github.com/chgaowei/ai-agent-infra-list).
+I will continuously update this article. I maintain it as an open source project: [https://github.com/chgaowei/ai-agent-infra-list](https://github.com/chgaowei/ai-agent-infra-list).
 
 If you know of any excellent open source projects, have different opinions about certain projects, or wish to promote your open source project, feel free to submit a PR.
 
@@ -28,451 +22,630 @@ WeChat: Please add WeChat ID changshan02, with note "AI discussion group".
 
 Also welcome to join Discord to discuss with global tech professionals: [https://discord.gg/BNJdvMa5XE](https://discord.gg/BNJdvMa5XE)
 
+## This update (2026-09)
 
-## This Month's Recommended Projects
+**Recommendation:** treat protocols as a **layered stack**, not as rivals.
 
-Each monthly update will recommend one or more projects. This month, we'd like to recommend our open source project **AgentConnect**:
+- **Identity / open internet:** [ANP 1.1](https://github.com/agent-network-protocol/AgentNetworkProtocol) (`did:wba`) in the [W3C AI Agent Protocol Community Group](https://www.w3.org/community/agentprotocol/)
+- **Tasks between agents:** [A2A](https://github.com/a2aproject/A2A)
+- **Tools and context:** [MCP](https://modelcontextprotocol.io)
 
-AgentConnect's vision is to define how agents connect and build an open, secure, and efficient collaboration network for billions of agents. AgentConnect provides the following capabilities:
+ANP is the identity and discovery layer for agents on the open internet. A2A is the task/runtime collab layer. MCP is the tool layer. Use them together.
 
-- Provides a decentralized authentication method based on W3C DID specification, allowing agents to control their own identity and perform cross-platform, secure, low-cost identity verification with any other agent.
+Naming trap: **IBM ACP** (Agent Communication Protocol) **merged into A2A in August 2025** and is no longer a separate standard. **Zed ACP** (Agent Client Protocol) and **OpenAI/Stripe Agentic Commerce Protocol** also use the letters "ACP" — they are unrelated.
 
-- Supports DID-based end-to-end encrypted communication, ensuring secure communication between agents.
+### Protocol comparison (layers, not rivals)
 
-- Supports meta-protocol negotiation, allowing agents to negotiate capabilities and communication protocols using natural language, and use LLM to generate code for protocol communication. This helps achieve self-organizing and self-negotiating agent networks.
-
-- Supports application layer protocol management, enabling convenient loading, updating, and unloading of protocols and protocol code, helping improve communication efficiency between agents.
-
-
-GitHub repository: [https://github.com/chgaowei/AgentConnect](https://github.com/chgaowei/AgentConnect)
-
-Technical overview: [https://github.com/chgaowei/AgentNetworkProtocol/blob/main/chinese/00-AgentNetworkProtocol%E6%8A%80%E6%9C%AF%E8%93%9D%E5%9B%BE.md](https://github.com/chgaowei/AgentNetworkProtocol/blob/main/chinese/00-AgentNetworkProtocol%E6%8A%80%E6%9C%AF%E8%93%9D%E5%9B%BE.md)
-
+| Protocol | Layer | What it standardizes | Notes |
+| --- | --- | --- | --- |
+| **ANP / did:wba** | Identity and open internet | Decentralized agent identity, discovery, descriptions, encrypted collab | Peer of A2A/MCP, not a replacement. Specs: [AgentNetworkProtocol](https://github.com/agent-network-protocol/AgentNetworkProtocol). SDK: [AgentConnect](https://github.com/agent-network-protocol/anp) (repo now `anp`). Site: [agent-network-protocol.com](https://agent-network-protocol.com/) |
+| **A2A** | Agent-to-agent tasks | Agent Cards, task lifecycle, collab between opaque agents | Linux Foundation. IBM ACP merged here (Aug 2025). [a2a-protocol.org](https://a2a-protocol.org) |
+| **MCP** | Agent-to-tool | Tools, resources, and prompts for LLM apps | [modelcontextprotocol.io](https://modelcontextprotocol.io) |
+| **AG-UI / A2UI** | Agent-to-user UI | Event stream to the frontend (AG-UI); declarative native UI (A2UI) | Complementary, not competitors |
+| **Zed ACP** | Agent-to-editor / IDE | Connect any editor to any coding agent | **Not** IBM ACP and **not** A2A |
 
 # Overview
 
-For the overall classification structure, I will divide it into four main categories: frameworks, planning, memory, and tools, with each category further subdivided based on different dimensions. The classification may not be perfect and might be adjusted later.
-- Frameworks
-  - One-Stop Platforms: [dify](https://github.com/langgenius/dify)    [AutoGpt](https://github.com/Significant-Gravitas/AutoGPT)     [FastGPT](https://github.com/labring/FastGPT)     [BISHENG](https://github.com/dataelement/bisheng)
-  - Development Frameworks: [langchain](https://github.com/langchain-ai/langchain)     [llama_index](https://github.com/run-llama/llama_index)     [semantic-kernel](https://github.com/microsoft/semantic-kernel)     [LangGraph](https://github.com/langchain-ai/langgraph)     [phidata](https://github.com/phidatahq/phidata)     [haystack](https://github.com/deepset-ai/haystack)
-  - Multi-Agent Frameworks: [crewai](https://github.com/crewAIInc/crewAI)     [Autogen](https://github.com/microsoft/autogen)     [Camel](https://github.com/camel-ai/camel)     [Magentic-One](https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one)     [MetaGPT](https://github.com/geekan/MetaGPT)
-  - Build Tools: [AgentOps](https://github.com/AgentOps-AI/agentops)     [AgentStack](https://github.com/AgentOps-AI/AgentStack)     [dspy](https://github.com/stanfordnlp/dspy)     [phoenix](https://github.com/Arize-ai/phoenix)
-- Planning
-  - Workflow Orchestration: [inngest](https://github.com/inngest/inngest)     [prefect](https://github.com/PrefectHQ/prefect)
-- Memory
-  - Memory Engines: [mem0](https://github.com/mem0ai/mem0)     [DB-GPT](https://github.com/eosphoros-ai/DB-GPT)     [Letta](https://github.com/letta-ai/letta)     [RAGFlow](https://github.com/infiniflow/ragflow)     [Cognee](https://github.com/topoteretes/cognee)     [KnowledgeTable](https://github.com/whyhow-ai/knowledge-table)
-  - GraphRAG Technology: [graphrag](https://github.com/microsoft/graphrag)     [fast-graphrag](https://github.com/circlemind-ai/fast-graphrag)     [LightRAG](https://github.com/HKUDS/LightRAG)     [nano-graphrag](https://github.com/gusye1234/nano-graphrag)
-  - Storage: [Milvus](https://github.com/milvus-io/milvus)     [Weaviate](https://github.com/weaviate/weaviate)     [Chroma](https://github.com/chroma-core/chroma)
-- Tools
-  - Networking and Communication: [AgentConnect](https://github.com/chgaowei/AgentConnect)     [AgentNetworkProtocol](https://github.com/chgaowei/AgentNetworkProtocol)     [Agora Protocol](https://github.com/agora-protocol/paper-demo)     [agent-protocol](https://github.com/AI-Engineer-Foundation/agent-protocol)     [naptha-sdk](https://github.com/NapthaAI/naptha-sdk)
-  - Computer Use API: [npi](https://github.com/npi-ai/npi)
-  - Authentication: [AgentConnect](https://github.com/chgaowei/AgentConnect)
-  - Runtime: [E2B](https://github.com/e2b-dev/E2B)     [SandBase Harness](https://github.com/sandbaseai/sandbase-harness)
-  - Web Browsing: [Crawlee](https://github.com/apify/crawlee)     [Browserless](https://github.com/browserless/browserless)     [AgentQL](https://github.com/tinyfish-io/agentql)
+Classification is a snapshot of 2026. Projects may fit more than one bucket; we list each once in the detailed sections (with a few cross-links for ANP / A2A / MCP).
 
-  
-# Frameworks
+- Standards bodies & working groups: [W3C AI Agent Protocol CG](https://www.w3.org/community/agentprotocol/) · [AAIF](https://aaif.io) · [A2A](https://github.com/a2aproject/A2A) · [AGNTCY](https://agntcy.org) · [AP2](https://github.com/google-agentic-commerce/AP2)
+- Identity & trust: [ANP](https://github.com/agent-network-protocol/AgentNetworkProtocol) · [did:wba](https://github.com/agent-network-protocol/AgentNetworkProtocol) · [AgentConnect](https://github.com/agent-network-protocol/anp) · [W3C DID](https://www.w3.org/TR/did/)
+- Agent-to-agent protocols: [ANP](https://github.com/agent-network-protocol/AgentNetworkProtocol) · [A2A](https://github.com/a2aproject/A2A)
+- Agent-to-tool / MCP: [MCP spec](https://github.com/modelcontextprotocol/modelcontextprotocol) · [servers](https://github.com/modelcontextprotocol/servers) · [registry](https://registry.modelcontextprotocol.io) · [goose](https://github.com/block/goose) · [AGENTS.md](https://github.com/agentsmd/agents.md) · [agentgateway](https://github.com/agentgateway/agentgateway)
+- Agent-to-user / UI: [AG-UI](https://github.com/ag-ui-protocol/ag-ui) · [A2UI](https://a2ui.org)
+- Agent-to-client / IDE: [Zed ACP](https://github.com/zed-industries/agent-client-protocol)
+- Commerce & payments: [AP2](https://github.com/google-agentic-commerce/AP2) · [Agentic Commerce Protocol](https://github.com/agentic-commerce-protocol/agentic-commerce-protocol)
+- Frameworks & orchestration: [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) · [Google ADK](https://github.com/google/adk-python) · [Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-python) · [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) · [LangGraph](https://github.com/langchain-ai/langgraph) · [LangChain](https://github.com/langchain-ai/langchain) · [LlamaIndex](https://github.com/run-llama/llama_index) · [Agno](https://github.com/agno-agi/agno) · [Pydantic AI](https://github.com/pydantic/pydantic-ai) · [Mastra](https://github.com/mastra-ai/mastra) · [Qwen-Agent](https://github.com/QwenLM/Qwen-Agent) · [Strands](https://github.com/strands-agents/sdk-python) · [Haystack](https://github.com/deepset-ai/haystack) · [DSPy](https://github.com/stanfordnlp/dspy) · [Inngest](https://github.com/inngest/inngest) · [Prefect](https://github.com/PrefectHQ/prefect) · [TEN-Agent](https://github.com/TEN-framework/ten-framework) · [AgentStack](https://github.com/agentstack-ai/AgentStack)
+- Multi-agent: [CrewAI](https://github.com/crewAIInc/crewAI) · [CAMEL](https://github.com/camel-ai/camel) · [MetaGPT](https://github.com/FoundationAgents/MetaGPT) (also LangGraph / Microsoft Agent Framework)
+- Memory & RAG: [mem0](https://github.com/mem0ai/mem0) · [Graphiti](https://github.com/getzep/graphiti) · [Letta](https://github.com/letta-ai/letta) · [RAGFlow](https://github.com/infiniflow/ragflow) · [Cognee](https://github.com/topoteretes/cognee) · [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) · [GraphRAG](https://github.com/microsoft/graphrag) · [fast-graphrag](https://github.com/circlemind-ai/fast-graphrag) · [LightRAG](https://github.com/HKUDS/LightRAG) · [nano-graphrag](https://github.com/gusye1234/nano-graphrag) · [Milvus](https://github.com/milvus-io/milvus) · [Weaviate](https://github.com/weaviate/weaviate) · [Chroma](https://github.com/chroma-core/chroma)
+- Browser & computer use: [Scrapeless](https://github.com/scrapeless-ai) · [browser-use](https://github.com/browser-use/browser-use) · [Skyvern](https://github.com/Skyvern-AI/skyvern) · [Open-AutoGLM](https://github.com/zai-org/Open-AutoGLM) · [Crawlee](https://github.com/apify/crawlee) · [Browserless](https://github.com/browserless/browserless) · [AgentQL](https://github.com/tinyfish-io/agentql)
+- Runtimes, sandboxes & gateways: [Daytona](https://github.com/daytonaio/daytona) · [E2B](https://github.com/e2b-dev/E2B) · [SandBase Harness](https://github.com/sandbaseai/sandbase-harness) · [goose](https://github.com/block/goose) · [agentgateway](https://github.com/agentgateway/agentgateway)
+- Observability & evals: [Langfuse](https://github.com/langfuse/langfuse) · [Phoenix](https://github.com/Arize-ai/phoenix) · [AgentOps](https://github.com/AgentOps-AI/agentops) · [OpenTelemetry GenAI conventions](https://github.com/open-telemetry/semantic-conventions-genai)
+- Visual / low-code platforms: [n8n](https://github.com/n8n-io/n8n) · [Coze Studio](https://github.com/coze-dev/coze-studio) · [Dify](https://github.com/langgenius/dify) · [FastGPT](https://github.com/labring/FastGPT) · [BISHENG](https://github.com/dataelement/bisheng)
+- Historical / archived / maintenance-mode: [AutoGPT](https://github.com/Significant-Gravitas/AutoGPT) · [AutoGen](https://github.com/microsoft/autogen) · [Semantic Kernel](https://github.com/microsoft/semantic-kernel) · [Magentic-One](https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one) · [npi](https://github.com/sheet0/npi) · [agent-protocol](https://github.com/agi-inc/agent-protocol) · [Agora Protocol](https://github.com/agora-protocol/paper-demo) · [naptha-sdk](https://github.com/NapthaAI/naptha-sdk)
 
 
-## One-Stop Platforms
+# 1. Standards bodies & working groups
+
+### W3C AI Agent Protocol Community Group
+
+W3C Community Group developing open, interoperable protocols so agents can discover, identify, and collaborate on the Web. ANP / `did:wba` work is incubated here.
+
+Site: [https://www.w3.org/community/agentprotocol/](https://www.w3.org/community/agentprotocol/)
+
+Drafts: [https://w3c-cg.github.io/ai-agent-protocol/](https://w3c-cg.github.io/ai-agent-protocol/)
+
+### AAIF (Agentic AI Foundation)
+
+Industry foundation at [aaif.io](https://aaif.io) working on operationalizing agentic AI (identity and trust, observability, commerce, security, workflows). Hosts and coordinates several agentic open-source efforts, including goose.
+
+Site: [https://aaif.io](https://aaif.io)
+
+### A2A (Agent2Agent Protocol)
+
+Open protocol for communication between opaque agentic applications (Agent Cards, task lifecycle). Now a Linux Foundation project. IBM's Agent Communication Protocol (ACP) merged into A2A in August 2025.
+
+GitHub repository: [https://github.com/a2aproject/A2A](https://github.com/a2aproject/A2A)
+
+Site: [https://a2a-protocol.org](https://a2a-protocol.org)
+
+### AGNTCY
+
+Linux Foundation project building "Internet of Agents" infrastructure: discovery, identity, messaging (SLIM), and observability across vendors and frameworks.
+
+Site: [https://agntcy.org](https://agntcy.org)
+
+GitHub repository: [https://github.com/agntcy](https://github.com/agntcy)
+
+### AP2 (Agent Payments Protocol)
+
+Google's open protocol for secure, interoperable AI-driven payments and authorization (mandates) between agents and merchants. Complements A2A / MCP; it is not an agent-to-agent task protocol.
+
+GitHub repository: [https://github.com/google-agentic-commerce/AP2](https://github.com/google-agentic-commerce/AP2)
+
+# 2. Identity & trust
+
+This is the open-internet layer: how an agent proves who it is, is discovered, and talks securely **across platforms**, without a central IdP. **ANP / `did:wba` / AgentConnect** belong here — not under A2A.
+
+### Agent Network Protocol (ANP)
+
+Open protocol suite for agent identity, naming, discovery, negotiation, and collaboration on the open internet. The 1.1 spec line covers `did:wba`, WNS handles, agent description, agent discovery, end-to-end messaging, and agent payments. Incubated with the W3C AI Agent Protocol CG. Complements A2A (tasks) and MCP (tools); it does not replace them.
+
+GitHub repository: [https://github.com/agent-network-protocol/AgentNetworkProtocol](https://github.com/agent-network-protocol/AgentNetworkProtocol)
+
+Site: [https://agent-network-protocol.com/](https://agent-network-protocol.com/)
+
+W3C CG: [https://www.w3.org/community/agentprotocol/](https://www.w3.org/community/agentprotocol/)
+
+### did:wba
+
+Web-based DID method used by ANP for cross-platform agent identity and authentication (W3C DID compatible, designed for agents on existing HTTPS infrastructure). Specified in the ANP 1.1 suite.
+
+GitHub repository: [https://github.com/agent-network-protocol/AgentNetworkProtocol](https://github.com/agent-network-protocol/AgentNetworkProtocol)
+
+### AgentConnect
+
+Multi-language SDK and reference implementation of ANP: `did:wba` identity, agent description, discovery, RPC, verifiable proofs, and end-to-end encrypted communication. The GitHub repo is now published as `anp`; historical `chgaowei/AgentConnect` and `agent-network-protocol/AgentConnect` redirect there.
+
+GitHub repository: [https://github.com/agent-network-protocol/anp](https://github.com/agent-network-protocol/anp)
+
+Homepage: [https://agent-network-protocol.com/](https://agent-network-protocol.com/)
+
+### W3C Decentralized Identifiers (DID)
+
+W3C standard for decentralized identifiers. ANP's `did:wba` is a DID method; many agent identity designs reuse DID / VC rather than inventing a new ID scheme.
+
+Specification: [https://www.w3.org/TR/did/](https://www.w3.org/TR/did/)
+
+GitHub repository: [https://github.com/w3c/did](https://github.com/w3c/did)
+
+# 3. Agent-to-agent protocols
+
+ANP and A2A are **layers**, not rivals: ANP covers identity/discovery on the open internet; A2A covers structured task exchange between opaque agents (often inside a platform or after identity is established).
+
+### Agent Network Protocol (ANP)
+
+See [Identity & trust](#2-identity--trust). At the application layer ANP defines agent description and discovery so heterogeneous agents can find and invoke each other.
+
+GitHub repository: [https://github.com/agent-network-protocol/AgentNetworkProtocol](https://github.com/agent-network-protocol/AgentNetworkProtocol)
+
+### A2A
+
+See [Standards](#1-standards-bodies--working-groups). Use A2A when you need a shared task model (submit / work / complete) and Agent Cards between existing agent runtimes.
+
+GitHub repository: [https://github.com/a2aproject/A2A](https://github.com/a2aproject/A2A)
+
+Site: [https://a2a-protocol.org](https://a2a-protocol.org)
+
+# 4. Agent-to-tool / MCP
+
+### Model Context Protocol (MCP)
+
+Open protocol for connecting LLM applications to external tools, data, and prompts. De-facto tool layer for agents in 2026; complementary to ANP (identity) and A2A (tasks).
+
+Site: [https://modelcontextprotocol.io](https://modelcontextprotocol.io)
+
+Specification: [https://github.com/modelcontextprotocol/modelcontextprotocol](https://github.com/modelcontextprotocol/modelcontextprotocol)
+
+Official servers: [https://github.com/modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers)
+
+GitHub organization: [https://github.com/modelcontextprotocol](https://github.com/modelcontextprotocol)
+
+### MCP servers
+
+Reference and community MCP server implementations (filesystem, git, browsers, SaaS connectors, and more).
+
+GitHub repository: [https://github.com/modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers)
+
+### MCP Registry
+
+Official metadata registry for publicly listed MCP servers (preview). Used by clients and marketplaces to discover servers.
+
+Registry: [https://registry.modelcontextprotocol.io](https://registry.modelcontextprotocol.io)
+
+### goose
+
+Open-source, extensible agent from Block (now under AAIF) that can install, execute, edit, and test with any LLM. A practical MCP-native coding/on-machine agent.
+
+GitHub repository: [https://github.com/block/goose](https://github.com/block/goose) (canonical: [https://github.com/aaif-goose/goose](https://github.com/aaif-goose/goose))
+
+### AGENTS.md
+
+A simple, open markdown format for guiding coding agents about a repo (conventions, commands, pitfalls). Complementary to MCP: it is project-local instruction, not a tool protocol.
+
+GitHub repository: [https://github.com/agentsmd/agents.md](https://github.com/agentsmd/agents.md)
+
+Site: [https://agents.md](https://agents.md)
+
+### agentgateway
+
+Open-source agentic proxy / gateway for AI agents and MCP servers (routing, policy, and connectivity in front of tools).
+
+GitHub repository: [https://github.com/agentgateway/agentgateway](https://github.com/agentgateway/agentgateway)
+
+# 5. Agent-to-user / UI
+
+### AG-UI
+
+Agent-User Interaction Protocol: a lightweight event-based standard for connecting agent backends to user-facing apps (streaming text, tool calls, shared state, human-in-the-loop). Complements MCP (tools) and A2A (agent collab).
+
+GitHub repository: [https://github.com/ag-ui-protocol/ag-ui](https://github.com/ag-ui-protocol/ag-ui)
+
+### A2UI
+
+Agent-to-User Interface protocol (Google, with CopilotKit and others): agents send declarative UI descriptions that clients render with native widgets, instead of shipping executable UI code. Often carried inside AG-UI or A2A streams.
+
+Site: [https://a2ui.org](https://a2ui.org)
+
+# 6. Agent-to-client / IDE
+
+**Not A2A. Not IBM ACP.** Zed's Agent Client Protocol (also abbreviated ACP) is an editor-to-agent wire protocol.
+
+### Agent Client Protocol (Zed ACP)
+
+Protocol for connecting any editor/IDE to any coding agent. Originated at Zed; the spec repo now lives under the `agentclientprotocol` org. Do not confuse with IBM ACP (merged into A2A) or the OpenAI/Stripe Agentic Commerce Protocol.
+
+GitHub repository: [https://github.com/zed-industries/agent-client-protocol](https://github.com/zed-industries/agent-client-protocol) (canonical: [https://github.com/agentclientprotocol/agent-client-protocol](https://github.com/agentclientprotocol/agent-client-protocol))
+
+# 7. Commerce & payments
+
+Short section: how agents pay and check out. This is not identity and not A2A.
+
+### AP2 (Agent Payments Protocol)
+
+See [Standards](#1-standards-bodies--working-groups). Authorization / payments layer for agent-driven purchases.
+
+GitHub repository: [https://github.com/google-agentic-commerce/AP2](https://github.com/google-agentic-commerce/AP2)
+
+### Agentic Commerce Protocol (OpenAI / Stripe)
+
+Open standard (also abbreviated **ACP**) for connecting buyers, their agents, and businesses to complete purchases. Maintained by OpenAI and Stripe. Unrelated to IBM ACP and Zed ACP.
+
+GitHub repository: [https://github.com/agentic-commerce-protocol/agentic-commerce-protocol](https://github.com/agentic-commerce-protocol/agentic-commerce-protocol)
 
 
-### dify
+# 8. Frameworks & orchestration
 
-Dify is an open-source LLM application development platform. Its intuitive interface combines AI workflows, RAG pipelines, agent capabilities, model management, and observability features, enabling rapid progression from prototype to production.
+LangChain remains widely used; **LangGraph is the agent runtime** in that family. Microsoft's new default is **Microsoft Agent Framework** (AutoGen and Semantic Kernel are in Historical). Phidata was renamed **Agno**.
 
-GitHub repository: [https://github.com/langgenius/dify](https://github.com/langgenius/dify)
+### OpenAI Agents SDK
 
+Lightweight Python SDK for building agent and multi-agent workflows on OpenAI models (handoffs, tools, tracing).
 
-### AutoGpt
+GitHub repository: [https://github.com/openai/openai-agents-python](https://github.com/openai/openai-agents-python)
 
-AutoGPT is a powerful platform for creating, deploying, and managing continuously running AI agents to automate complex workflows. AutoGPT has evolved from its early demo stage to include workflow capabilities.
+### Google ADK (Agent Development Kit)
 
-GitHub repository: [https://github.com/Significant-Gravitas/AutoGPT](https://github.com/Significant-Gravitas/AutoGPT)
+Code-first Python toolkit for building, evaluating, and deploying agents, with first-class ties to Gemini, A2A, MCP, and Vertex.
 
+GitHub repository: [https://github.com/google/adk-python](https://github.com/google/adk-python)
 
-### fastgpt
+### Claude Agent SDK
 
-FastGPT is a knowledge-based platform built on Large Language Models (LLMs), offering a comprehensive set of out-of-the-box features including data processing, RAG retrieval, and visual AI workflow orchestration. With FastGPT, users can easily develop and deploy sophisticated Q&A systems without complex setup or configuration.
+Anthropic's Python SDK for building agents with Claude (tools, sessions, Claude Code-style harness patterns).
 
-GitHub repository: [https://github.com/labring/FastGPT](https://github.com/labring/FastGPT)
+GitHub repository: [https://github.com/anthropics/claude-agent-sdk-python](https://github.com/anthropics/claude-agent-sdk-python)
 
+### Microsoft Agent Framework
 
-### BISHENG
+Microsoft's production framework for building, orchestrating, and deploying agents and multi-agent workflows in Python and .NET. Successor path for AutoGen and Semantic Kernel.
 
-BISHENG is an open-source LLM DevOps platform designed for next-generation enterprise AI applications. Its powerful and comprehensive features include: generative AI workflows, RAG, agents, unified model management, evaluation, SFT, dataset management, enterprise-grade system management, and observability.
-
-GitHub repository: [https://github.com/dataelement/bisheng](https://github.com/dataelement/bisheng)
-
-
-## Development Frameworks
-
-
-### langchain
-
-LangChain is a development framework designed for building applications powered by large language models. It provides a suite of tools and components including Models, Prompts, Indexes, Memory, Chains, and Agents.
-
-GitHub repository: [https://github.com/langchain-ai/langchain](https://github.com/langchain-ai/langchain)
-
-
-### llama_index
-
-LlamaIndex (GPT Index) is a data framework for LLM applications that combines external data with large language models (LLMs). It supports creating indexes from various data sources (such as documents, databases, etc.) and optimizes information retrieval processes.
-
-GitHub repository: [https://github.com/run-llama/llama_index](https://github.com/run-llama/llama_index)
-
-
-### semantic-kernel
-
-Semantic Kernel is an SDK designed to integrate large language models (LLMs) with traditional programming languages like C#, Python, and Java, supporting automatic coordination of plugins. It provides abstraction layers for managing AI services and memory storage, supports multiple platforms and vector databases, and can automatically generate and execute LLM-generated plans.
-
-GitHub repository: [https://github.com/microsoft/semantic-kernel](https://github.com/microsoft/semantic-kernel)
-
+GitHub repository: [https://github.com/microsoft/agent-framework](https://github.com/microsoft/agent-framework)
 
 ### LangGraph
 
-LangGraph is a library for building stateful, multi-agent applications. It provides three core advantages over other LLM frameworks: loops, controllability, and persistence. LangGraph allows you to define workflows that include loops, which are essential for most agent architectures, distinguishing it from DAG-based solutions.
+Library for stateful, cyclic agent and multi-agent applications (loops, control, persistence). This is LangChain's agent runtime; prefer it over raw chains for agents.
 
 GitHub repository: [https://github.com/langchain-ai/langgraph](https://github.com/langchain-ai/langgraph)
 
+### LangChain
 
-### phidata
+General LLM application framework (models, prompts, retrieval, tools). Still the integration surface for many stacks; for agents, use LangGraph.
 
-Phidata is a framework for building agent systems that allows engineers to create agents with memory, knowledge, tools, and reasoning capabilities. It supports building teams of agents that can work together and interact with agents through a beautiful user interface. Phidata also provides functionality for monitoring, evaluating, and optimizing agents, and helps develop agent applications with APIs, databases, and vector databases.
+GitHub repository: [https://github.com/langchain-ai/langchain](https://github.com/langchain-ai/langchain)
 
-GitHub repository: [https://github.com/phidatahq/phidata](https://github.com/phidatahq/phidata)
+### LlamaIndex
 
+Data framework for connecting LLMs to private data (indexes, retrieval, agentic RAG workflows).
 
-### haystack
+GitHub repository: [https://github.com/run-llama/llama_index](https://github.com/run-llama/llama_index)
 
-An AI orchestration framework for building customizable, production-ready Large Language Model (LLM) applications. Connect components (models, vector databases, file converters) into pipelines or agents that can interact with data. With advanced retrieval methods, it's ideal for building RAG (Retrieval Augmented Generation), question-answering, semantic search, or conversational agent chatbots.
+### Agno (formerly phidata)
+
+Python framework for building multimodal agents and agent teams with memory, knowledge, and tools. Phidata was renamed Agno in 2025; the old `phidatahq/phidata` repo redirects here.
+
+GitHub repository: [https://github.com/agno-agi/agno](https://github.com/agno-agi/agno)
+
+### Pydantic AI
+
+Typed Python agent framework from the Pydantic team: agents, tools, and structured output with Pydantic models.
+
+GitHub repository: [https://github.com/pydantic/pydantic-ai](https://github.com/pydantic/pydantic-ai)
+
+### Mastra
+
+TypeScript framework for AI applications and agents (workflows, tools, evals, and observability in JS/TS).
+
+GitHub repository: [https://github.com/mastra-ai/mastra](https://github.com/mastra-ai/mastra)
+
+### Qwen-Agent
+
+Agent framework and applications on Qwen (>=3.0): function calling, MCP, code interpreter, RAG, and a Chrome extension.
+
+GitHub repository: [https://github.com/QwenLM/Qwen-Agent](https://github.com/QwenLM/Qwen-Agent)
+
+### Strands
+
+Open-source SDK for production agents in Python (and TypeScript), model- and cloud-agnostic. The `sdk-python` repo now redirects to `harness-sdk`.
+
+GitHub repository: [https://github.com/strands-agents/sdk-python](https://github.com/strands-agents/sdk-python)
+
+### Haystack
+
+Pipeline/agent orchestration for production LLM apps: connect models, converters, and vector stores into RAG, QA, and agents.
 
 GitHub repository: [https://github.com/deepset-ai/haystack](https://github.com/deepset-ai/haystack)
 
+### DSPy
 
-## Multi-Agent Frameworks
-
-
-### crewai
-
-CrewAI is a multi-agent framework designed to coordinate multiple AI agents working together to complete complex tasks and workflows. The framework enables users to define and execute automated agent collaborations through task management and process control.
-
-GitHub repository: [https://github.com/crewAIInc/crewAI](https://github.com/crewAIInc/crewAI)
-
-
-### Autogen
-
-AutoGen is an open-source framework for building AI agent systems. It simplifies the creation of event-driven, distributed, scalable, and resilient agent applications. AutoGen enables rapid system construction where AI agents can collaborate and execute tasks autonomously or under human supervision.
-
-GitHub repository: [https://github.com/microsoft/autogen](https://github.com/microsoft/autogen)
-
-
-### Camel
-
-CAMEL is one of the earliest multi-agent frameworks based on Large Language Models (LLMs) and has evolved into a general framework for building and utilizing LLM-based agents to solve real-world tasks.
-
-GitHub repository: [https://github.com/camel-ai/camel](https://github.com/camel-ai/camel)
-
-
-### Magentic-One
-
-Magentic-One is a high-performance general-purpose agent system designed to solve complex tasks. It employs a multi-agent architecture where a main agent "Orchestrator" directs four specialized agents to complete tasks. The Orchestrator is responsible for planning, tracking progress, and replanning when errors occur, while guiding these specialized agents to perform tasks such as operating web browsers, browsing local files, or writing and executing Python code.
-
-GitHub repository: [https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one](https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one)
-
-
-### MetaGPT
-
-MetaGPT takes a one-line requirement as input and outputs user stories, competitive analysis, requirements, data structures, APIs, and documentation. MetaGPT includes roles such as Product Manager, Architect, Project Manager, and Engineer. It provides the entire process of a software company with carefully orchestrated SOPs.
-
-GitHub repository: [https://github.com/geekan/MetaGPT](https://github.com/geekan/MetaGPT)
-
-
-## Building Tools
-
-
-### AgentOps
-
-A Python SDK for AI agent monitoring, LLM cost tracking, benchmarking, and more. Integrates with most LLM and agent frameworks such as CrewAI, Langchain, and Autogen.
-
-GitHub repository: [https://github.com/AgentOps-AI/agentops](https://github.com/AgentOps-AI/agentops)
-
-
-### langfuse
-
-Langfuse is an open-source LLM engineering platform: LLM observability, metrics, evaluation, prompt management, Playground, datasets. Integrates with LlamaIndex, Langchain, OpenAI SDK, LiteLLM, etc.
-
-GitHub repository: [https://github.com/langfuse/langfuse](https://github.com/langfuse/langfuse)
-
-
-### AgentStack
-
-AgentStack enables you to create AI agent projects from the command line. It's an excellent tool for bootstrapping agent projects and provides numerous CLI utilities for easy code generation throughout the development process.
-
-GitHub repository: [https://github.com/AgentOps-AI/AgentStack](https://github.com/AgentOps-AI/AgentStack)
-
-
-### dspy
-
-DSPy is an open-source framework developed by Stanford University aimed at optimizing the use of Language Models (LLMs). It works by transforming declarative language model calls into self-optimizing pipelines. Instead of manually writing specific prompts for each task, DSPy allows users to define high-level objectives and metrics, and the framework automatically optimizes LLM performance.
+Stanford framework that turns declarative LM programs into self-optimizing pipelines, instead of hand-written prompts.
 
 GitHub repository: [https://github.com/stanfordnlp/dspy](https://github.com/stanfordnlp/dspy)
 
+### Inngest
 
-### phoenix
-
-Phoenix is an open-source AI observability platform primarily used for experimentation, evaluation, and troubleshooting. It supports tracking LLM application runtime, benchmarking performance, and creating versioned datasets. It enables tracking changes to prompts, LLMs, and retrieval methods, and is compatible with multiple frameworks and LLM providers.
-
-GitHub repository: [https://github.com/Arize-ai/phoenix](https://github.com/Arize-ai/phoenix)
-
-
-## Featured Agents
-
-### TEN-Agent
-TEN Agent is a world-class multimodal AI agent integrated with OpenAI Realtime API and RTC, featuring weather checks, web searches, vision, and RAG capabilities. It combines the ultra-low latency of OpenAI Realtime API with the AI noise suppression of RTC, ensuring smooth and high-quality interactions. Consider using it if you want to build a real-time call agent.
-
-GitHub repository: [https://github.com/TEN-framework/TEN-Agent](https://github.com/TEN-framework/TEN-Agent)
-
-
-# Planning
-
-
-## Workflow Orchestration
-
-
-### inngest
-
-Inngest is a leading workflow orchestration platform that runs stateful step functions and AI workflows on serverless architectures, servers, or at the edge.
+Workflow orchestration for stateful step functions and AI workflows on serverless, servers, or the edge.
 
 GitHub repository: [https://github.com/inngest/inngest](https://github.com/inngest/inngest)
 
+### Prefect
 
-### prefect
-
-Prefect is a workflow orchestration framework for building Python data pipelines. It's the simplest way to transform scripts into reliable production workflows. With Prefect, users can build resilient and dynamically responsive data pipelines that can adapt to external changes and recover from unexpected situations.
+Python workflow orchestration: turn scripts into durable production pipelines that retry and adapt.
 
 GitHub repository: [https://github.com/PrefectHQ/prefect](https://github.com/PrefectHQ/prefect)
 
+### TEN-Agent
 
-# Memory
+Open-source realtime multimodal / voice agent framework (RTC + low-latency conversation). The GitHub repo was renamed to `ten-framework`; the `TEN-Agent` path redirects.
 
+GitHub repository: [https://github.com/TEN-framework/ten-framework](https://github.com/TEN-framework/ten-framework)  
+(historical `TEN-Agent` path redirects here; keep TEN-Agent as the product name)
 
-## Memory Engines
+### AgentStack
 
+CLI for bootstrapping AI agent projects and generating boilerplate. Less active than at first listing. The GitHub org is now `agentstack-ai`.
+
+GitHub repository: [https://github.com/agentstack-ai/AgentStack](https://github.com/agentstack-ai/AgentStack)
+
+# 9. Multi-agent
+
+Short: most new work happens inside **LangGraph**, **Microsoft Agent Framework**, or **CrewAI**. The entries below are dedicated multi-agent projects still worth knowing.
+
+### CrewAI
+
+Multi-agent framework for role-based crews: define agents, tasks, and processes so several agents collaborate on a workflow.
+
+GitHub repository: [https://github.com/crewAIInc/crewAI](https://github.com/crewAIInc/crewAI)
+
+### CAMEL
+
+Early LLM multi-agent framework that grew into a general toolkit for building and studying communicating agents.
+
+GitHub repository: [https://github.com/camel-ai/camel](https://github.com/camel-ai/camel)
+
+### MetaGPT
+
+Multi-agent "software company" pattern: one-line requirement in, roles (PM / architect / engineer) and SOPs out. Repository moved from `geekan/MetaGPT` to FoundationAgents/MetaGPT.
+
+GitHub repository: [https://github.com/FoundationAgents/MetaGPT](https://github.com/FoundationAgents/MetaGPT)
+
+Also see: [LangGraph](#langgraph), [Microsoft Agent Framework](#microsoft-agent-framework), [Agno](#agno-formerly-phidata).
+
+# 10. Memory & RAG
 
 ### mem0
 
-Mem0 is an intelligent memory layer that enhances AI assistants and agents, enabling personalized interactions and continuous improvement, suitable for customer support chatbots, AI assistants, and autonomous systems. It manages long-term memory through a hybrid database approach, ensuring efficient storage of personalized information and quick retrieval, enhancing the personalization and relevance of AI agent responses.
+Memory layer for assistants and agents: store and retrieve long-term personalized facts so responses stay relevant across sessions.
 
 GitHub repository: [https://github.com/mem0ai/mem0](https://github.com/mem0ai/mem0)
 
+### Graphiti
 
-### DB-GPT
+Real-time knowledge graphs for AI agents (temporally-aware graph memory from ongoing activity, not batch-only GraphRAG).
 
-DB-GPT is an open-source AI-native data application development framework that integrates AWEL (Agentic Workflow Expression Language) and multi-agent technology. Its goal is to build infrastructure in the large model domain by developing multiple technical capabilities (such as multi-model management SMMF, Text2SQL optimization, RAG framework optimization, multi-agent framework collaboration, and AWEL agent workflow orchestration), making data-driven large model applications simpler and more convenient.
-
-GitHub repository: [https://github.com/eosphoros-ai/DB-GPT](https://github.com/eosphoros-ai/DB-GPT)
-
+GitHub repository: [https://github.com/getzep/graphiti](https://github.com/getzep/graphiti)
 
 ### Letta (formerly MemGPT)
 
-Letta is a framework for building stateful LLM applications, supporting personalized chatbots, data-driven agents, and automated AI workflows. It allows applications to maintain long-term memory and connect to external data sources, suitable for applications requiring continuous interaction and dynamic updates.
+Framework for stateful LLM agents with long-term memory, self-managed context, and connections to external data.
 
 GitHub repository: [https://github.com/letta-ai/letta](https://github.com/letta-ai/letta)
 
-
 ### RAGFlow
 
-RAGFlow is an open-source RAG (Retrieval-Augmented Generation) engine built on deep document understanding. RAGFlow provides enterprises and individuals of all sizes with a streamlined RAG workflow, combining large language models (LLMs) to provide reliable question-answering and well-referenced citations for various complex data formats.
+Open-source RAG engine built on deep document understanding, with citations for complex enterprise files.
 
 GitHub repository: [https://github.com/infiniflow/ragflow](https://github.com/infiniflow/ragflow)
 
-
 ### Cognee
 
-Cognee implements scalable, modular ECL (Extract, Cognify, Load) pipelines that help users interconnect and retrieve past conversations, documents, and audio transcriptions while reducing hallucinations, development effort, and costs.
+ECL (Extract, Cognify, Load) pipelines that turn conversations, documents, and transcripts into a retrievable memory graph.
 
 GitHub repository: [https://github.com/topoteretes/cognee](https://github.com/topoteretes/cognee)
 
+### DB-GPT
 
-### KnowledgeTable
+AI-native data-app framework: Text2SQL, RAG, multi-model management, and AWEL agent workflow orchestration over databases.
 
-Knowledge Table is an open-source package designed to simplify the process of extracting and exploring structured data from unstructured documents.
+GitHub repository: [https://github.com/eosphoros-ai/DB-GPT](https://github.com/eosphoros-ai/DB-GPT)
 
-GitHub repository: [https://github.com/whyhow-ai/knowledge-table](https://github.com/whyhow-ai/knowledge-table)
+### GraphRAG
 
-
-## GraphRAG Technology
-
-
-### graphrag
-
-The GraphRAG project is a data pipeline and transformation suite designed to leverage the power of LLMs to extract meaningful structured data from unstructured text.
+Microsoft data pipeline that uses LLMs to extract a knowledge graph from unstructured text for retrieval.
 
 GitHub repository: [https://github.com/microsoft/graphrag](https://github.com/microsoft/graphrag)
 
-
 ### fast-graphrag
 
-Fast GraphRAG is a lean and promptable framework designed to provide interpretable, high-precision solutions for agent-driven retrieval workflows. It is designed for efficient, low-cost operations, supports dynamic data generation and incremental updates, and can seamlessly integrate into existing retrieval pipelines.
+Lean, incremental GraphRAG-style retrieval aimed at agent workflows (interpretable, lower-cost updates).
 
 GitHub repository: [https://github.com/circlemind-ai/fast-graphrag](https://github.com/circlemind-ai/fast-graphrag)
 
-
 ### LightRAG
 
-LightRAG is a simple and fast RAG engine.
+Simple, fast graph-enhanced RAG engine.
 
 GitHub repository: [https://github.com/HKUDS/LightRAG](https://github.com/HKUDS/LightRAG)
 
-
 ### nano-graphrag
 
-nano-graphrag provides a smaller, faster, and cleaner GraphRAG while maintaining core functionality. While GraphRAG is good and powerful, the official implementation is difficult to read or hack.
+Smaller, hackable GraphRAG implementation that keeps the core idea without the official repo's weight.
 
 GitHub repository: [https://github.com/gusye1234/nano-graphrag](https://github.com/gusye1234/nano-graphrag)
 
-
-## Storage
-
-
 ### Milvus
 
-Milvus is a high-performance vector database designed for scale, which AI applications can use to store and search large amounts of unstructured data such as text, images, and multimodal information.
+High-performance open-source vector database for storing and searching embeddings at scale.
 
 GitHub repository: [https://github.com/milvus-io/milvus](https://github.com/milvus-io/milvus)
 
-
 ### Weaviate
 
-Weaviate is an open-source vector database that can store both objects and vectors, supporting vector search combined with structured filtering, and offering the fault tolerance and scalability of a cloud-native database.
+Open-source vector database: objects + vectors, hybrid search with filters, cloud-native operations.
 
 GitHub repository: [https://github.com/weaviate/weaviate](https://github.com/weaviate/weaviate)
 
-
 ### Chroma
 
-Chroma is an AI-native open-source embedding database.
+AI-native open-source embedding database, commonly used as a local/dev vector store for RAG.
 
 GitHub repository: [https://github.com/chroma-core/chroma](https://github.com/chroma-core/chroma)
 
 
-# Tools
+# 11. Browser & computer use
 
+### Scrapeless
 
-## Network and Communication
+Open-source org for agent-oriented web data collection (community PR). See their GitHub org for SDKs and related repos.
 
+GitHub repository: [https://github.com/scrapeless-ai](https://github.com/scrapeless-ai)
 
-### AgentConnect
+### browser-use
 
-AgentConnect's vision is to define how agents connect and build an open, secure, and efficient collaboration network for billions of agents. AgentConnect provides the following capabilities:
+Popular open-source project that connects LLM agents to the web.
 
-- Provides a decentralized authentication method based on W3C DID specification, allowing agents to control their own identity and perform cross-platform, secure, low-cost identity verification with any other agent.
+GitHub repository: [https://github.com/browser-use/browser-use](https://github.com/browser-use/browser-use)
 
-- Supports end-to-end encrypted communication based on DID to ensure secure communication between agents.
+### Skyvern
 
-- Supports meta-protocol negotiation, allowing agents to negotiate capabilities and communication protocols using natural language, and use LLM to generate code for protocol communication. This helps achieve self-organizing and self-negotiating agent networks.
+Open-source project for LLM-driven website workflows.
 
-- Supports application layer protocol management, enabling convenient loading, updating, and unloading of protocols and protocol code, helping improve communication efficiency between agents.
+GitHub repository: [https://github.com/Skyvern-AI/skyvern](https://github.com/Skyvern-AI/skyvern)
 
+### Open-AutoGLM
 
-GitHub repository: [https://github.com/chgaowei/AgentConnect](https://github.com/chgaowei/AgentConnect)
+Open phone-agent model and framework from Zhipu (Z.ai).
 
+GitHub repository: [https://github.com/zai-org/Open-AutoGLM](https://github.com/zai-org/Open-AutoGLM)
 
-### AgentNetworkProtocol
+### Crawlee
 
-AgentNetworkProtocol (ANP) is an open protocol framework designed specifically for agent networks, aiming to establish an open, secure, efficient, self-organizing, and self-negotiating agent collaboration network. It consists of three layers: Identity and Encrypted Communication Layer, Meta Protocol Layer, and Application Protocol Layer. AgentConnect is the open-source implementation of AgentNetworkProtocol.
+Node.js library (JS/TS) for building reliable web collectors that feed RAG / LLM pipelines.
 
-GitHub repository: [https://github.com/chgaowei/AgentNetworkProtocol](https://github.com/chgaowei/AgentNetworkProtocol)
+GitHub repository: [https://github.com/apify/crawlee](https://github.com/apify/crawlee)
 
+### Browserless
 
-### Agora Protocol
+Docker-based Chrome service with REST APIs for screenshots, PDFs, and page extraction.
 
-Agora Protocol is a simple cross-platform protocol that enables efficient communication between heterogeneous LLMs. It first negotiates communication protocols using natural language and then communicates using the agreed protocol.
+GitHub repository: [https://github.com/browserless/browserless](https://github.com/browserless/browserless)
 
-GitHub repository: [https://github.com/agora-protocol/paper-demo](https://github.com/agora-protocol/paper-demo)
+### AgentQL
 
+Query language for locating data and elements on pages, including authenticated and dynamic content.
 
-### agent-protocol
+GitHub repository: [https://github.com/tinyfish-io/agentql](https://github.com/tinyfish-io/agentql)
 
-agent-protocol is a universal interface for interacting with AI agents. The protocol is technology stack agnostic - you can use it with any framework to build agents. It currently builds communication protocols between agents and agent users. However, it hasn't been updated for a long time.
+# 12. Runtimes, sandboxes & gateways
 
-GitHub repository: [https://github.com/AI-Engineer-Foundation/agent-protocol](https://github.com/AI-Engineer-Foundation/agent-protocol)
+### Daytona
 
+Secure, elastic infrastructure for running AI-generated code in isolated environments.
 
-### naptha-sdk
-
-Naptha enables users to build decentralized multi-agent workflows. Decentralized workflows can run on one or more nodes (rather than a central server) with different LLMs and numerous local data sources.
-
-GitHub repository: [https://github.com/NapthaAI/naptha-sdk](https://github.com/NapthaAI/naptha-sdk)
-
-
-### modelcontextprotocol
-The Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools. Whether you're building an AI-powered IDE, enhancing a chat interface, or creating custom AI workflows, MCP provides a standardized way to connect LLMs with the context they need.
-
-GitHub repository: [https://github.com/modelcontextprotocol](https://github.com/modelcontextprotocol)
-
-
-## Computer Use API
-
-
-### npi
-
-NPI is an open-source platform providing tool usage APIs that enable AI agents to take actions in the virtual world. It allows AI agents to operate and interact with various software tools and applications, enabling large language models to seamlessly integrate with existing software and application ecosystems through function calls. NPI acts as a gateway for these models to access the virtual world.
-
-GitHub repository: [https://github.com/npi-ai/npi](https://github.com/npi-ai/npi)
-
-
-## Authentication
-
-
-### AgentConnect
-
-AgentConnect provides agent authentication methods based on the W3C DID specification and supports end-to-end encrypted communication based on DID.
-
-GitHub repository: [https://github.com/chgaowei/AgentConnect](https://github.com/chgaowei/AgentConnect)
-
-
-## Runtime
-
+GitHub repository: [https://github.com/daytonaio/daytona](https://github.com/daytonaio/daytona)
 
 ### E2B
 
-E2B is an open-source infrastructure that allows you to run AI-generated code in secure isolated sandboxes in the cloud.
+Open-source infra for running AI-generated code in isolated cloud sandboxes.
 
 GitHub repository: [https://github.com/e2b-dev/E2B](https://github.com/e2b-dev/E2B)
 
 ### SandBase Harness
 
-SandBase Harness is a local-first TypeScript AI agent runtime with persistent sessions, sandboxed tool execution, MCP integration, memory, credential isolation, audit logs, and execution replay. It supports local, Docker, Kubernetes, and self-hosted deployments.
+Local-first TypeScript AI agent runtime: persistent sessions, sandboxed tools, MCP, memory, credential isolation, audit logs, and execution replay. Supports local, Docker, Kubernetes, and self-hosted deploys.
 
 GitHub repository: [https://github.com/sandbaseai/sandbase-harness](https://github.com/sandbaseai/sandbase-harness)
 
+# 13. Observability & evals
 
-## Web Browsing
+LangSmith is a **commercial** LangChain product (tracing, datasets, evals), not listed here as OSS. Prefer Langfuse / Phoenix / OTel for open stacks.
 
-### Scrapeless
+### Langfuse
 
-Scrapeless Scraping Browser provides AI Agents with high-concurrency, low-cost data collection capabilities, natively supports Puppeteer/Playwright, has the ability to deal with anti-bot protection mechanisms such as reCAPTCHA and Cloudflare, and can handle dynamic interactive pages. It is an ideal infrastructure for building automated intelligent agents.
+Open-source LLM engineering platform: traces, metrics, evals, prompt management, playground, datasets. Integrates with LangChain, LlamaIndex, OpenAI SDK, and others.
 
-GitHub repository: [https://github.com/scrapeless-ai](https://github.com/scrapeless-ai)
+GitHub repository: [https://github.com/langfuse/langfuse](https://github.com/langfuse/langfuse)
 
-### Crawlee
+### Phoenix
 
-Crawlee is a Node.js web scraping and browser automation library for building reliable crawlers, supporting JavaScript and TypeScript. It can extract data needed for AI, LLM, RAG, or GPT, downloading HTML, PDF, JPG, PNG, and other files from websites.
+Open-source AI observability from Arize: tracing, evals, datasets, and troubleshooting for LLM/agent apps.
 
-GitHub repository: [https://github.com/apify/crawlee](https://github.com/apify/crawlee)
+GitHub repository: [https://github.com/Arize-ai/phoenix](https://github.com/Arize-ai/phoenix)
 
+### AgentOps
 
-### Browserless
+Python SDK for agent monitoring, LLM cost tracking, and benchmarking; integrates with CrewAI, LangChain, AutoGen, and others.
 
-Browserless allows remote clients to connect and perform headless work, all within a Docker environment. It supports standard, unmodified Puppeteer and Playwright libraries and provides a REST-based API for performing common operations like data collection, PDF generation, and more.
+GitHub repository: [https://github.com/AgentOps-AI/agentops](https://github.com/AgentOps-AI/agentops)
 
-GitHub repository: [https://github.com/browserless/browserless](https://github.com/browserless/browserless)
+### OpenTelemetry GenAI semantic conventions
 
+Semantic conventions for tracing generative AI / agent workloads so traces are interoperable across vendors.
 
-### AgentQL
+GitHub repository: [https://github.com/open-telemetry/semantic-conventions-genai](https://github.com/open-telemetry/semantic-conventions-genai)
 
-AgentQL is an AI-powered query language for scraping websites and automating workflows. It uses natural language queries to precisely target data and elements on any webpage, including authenticated and dynamically generated content.
+# 14. Visual / low-code platforms
 
-GitHub repository: [https://github.com/tinyfish-io/agentql](https://github.com/tinyfish-io/agentql)
+### n8n
+
+Fair-code workflow automation with native AI nodes: visual building plus custom code, self-host or cloud.
+
+GitHub repository: [https://github.com/n8n-io/n8n](https://github.com/n8n-io/n8n)
+
+### Coze Studio
+
+Open-source visual AI agent development platform (create, debug, deploy) from the Coze team.
+
+GitHub repository: [https://github.com/coze-dev/coze-studio](https://github.com/coze-dev/coze-studio)
+
+### Dify
+
+Open-source LLM app platform: visual AI workflows, RAG, agents, model management, and observability, prototype to production.
+
+GitHub repository: [https://github.com/langgenius/dify](https://github.com/langgenius/dify)
+
+### FastGPT
+
+Knowledge-base platform on LLMs: data processing, RAG, and visual AI workflow orchestration for Q&A systems.
+
+GitHub repository: [https://github.com/labring/FastGPT](https://github.com/labring/FastGPT)
+
+### BISHENG
+
+Open-source LLM DevOps platform for enterprise apps: workflows, RAG, agents, model management, eval, SFT, and observability.
+
+GitHub repository: [https://github.com/dataelement/bisheng](https://github.com/dataelement/bisheng)
+
+# 15. Historical / archived / maintenance-mode
+
+Kept so older bookmarks still resolve. Prefer the 2026 replacements noted below.
+
+### AutoGPT
+
+Early autonomous-agent platform that later added workflows. Historically important; most new agent work has moved to the frameworks above.
+
+GitHub repository: [https://github.com/Significant-Gravitas/AutoGPT](https://github.com/Significant-Gravitas/AutoGPT)
+
+### AutoGen
+
+Microsoft's multi-agent framework. New development is **Microsoft Agent Framework**; use AutoGen only for existing apps. Migration guide is in the MAF docs.
+
+GitHub repository: [https://github.com/microsoft/autogen](https://github.com/microsoft/autogen)
+
+### Semantic Kernel
+
+Microsoft SDK for mixing LLMs with C# / Python / Java plugins. Folded into **Microsoft Agent Framework** as the successor; SK remains supported in maintenance.
+
+GitHub repository: [https://github.com/microsoft/semantic-kernel](https://github.com/microsoft/semantic-kernel)
+
+### Magentic-One
+
+Generalist multi-agent system (Orchestrator + specialist agents) shipped as an AutoGen package. The original `autogen-magentic-one` tree is a **deprecation stub**; Magentic-style orchestration now lives in AutoGen AgentChat and, for new work, in Microsoft Agent Framework. Folded here under AutoGen rather than listed as a live framework.
+
+GitHub repository: [https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one](https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one)
+
+### npi
+
+Early tool-gateway API so agents could act in software apps. Historical; the live repo is `sheet0/npi` (old `npi-ai/npi` redirects). Prefer MCP plus modern runtimes.
+
+GitHub repository: [https://github.com/sheet0/npi](https://github.com/sheet0/npi)
+
+### agent-protocol (AI Engineer Foundation)
+
+Early HTTP interface for interacting with agents, stack-agnostic. Long stale. Live URL: `agi-inc/agent-protocol` (old AI-Engineer-Foundation path redirects). Unrelated to ANP, A2A, Zed ACP, or IBM ACP. Superseded in practice by A2A / MCP / AG-UI.
+
+GitHub repository: [https://github.com/agi-inc/agent-protocol](https://github.com/agi-inc/agent-protocol)
+
+### Agora Protocol
+
+Paper-demo protocol: negotiate a communication scheme in natural language, then switch to the agreed protocol. Research artifact, not a production standard.
+
+GitHub repository: [https://github.com/agora-protocol/paper-demo](https://github.com/agora-protocol/paper-demo)
+
+### naptha-sdk
+
+SDK for decentralized multi-agent workflows across heterogeneous nodes and models. Little public activity since 2025; kept for reference.
+
+GitHub repository: [https://github.com/NapthaAI/naptha-sdk](https://github.com/NapthaAI/naptha-sdk)
+
+### phidata (renamed)
+
+Phidata was renamed **Agno** in 2025. Do not start new work under the old name.
+
+GitHub repository: [https://github.com/phidatahq/phidata](https://github.com/phidatahq/phidata) -> [https://github.com/agno-agi/agno](https://github.com/agno-agi/agno)
+
+### KnowledgeTable (gone)
+
+Open-source package for extracting structured tables from unstructured documents. The owner-original repo `whyhow-ai/knowledge-table` now returns **404** and is dropped from the live list.
+
+Former GitHub repository: [https://github.com/whyhow-ai/knowledge-table](https://github.com/whyhow-ai/knowledge-table) (404)
