@@ -59,7 +59,7 @@ Classification is a snapshot of 2026. Projects may fit more than one bucket; we 
 - Multi-agent: [CrewAI](https://github.com/crewAIInc/crewAI) · [CAMEL](https://github.com/camel-ai/camel) · [MetaGPT](https://github.com/FoundationAgents/MetaGPT) (also LangGraph / Microsoft Agent Framework)
 - Memory & RAG: [mem0](https://github.com/mem0ai/mem0) · [Graphiti](https://github.com/getzep/graphiti) · [Letta](https://github.com/letta-ai/letta) · [RAGFlow](https://github.com/infiniflow/ragflow) · [Cognee](https://github.com/topoteretes/cognee) · [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) · [GraphRAG](https://github.com/microsoft/graphrag) · [fast-graphrag](https://github.com/circlemind-ai/fast-graphrag) · [LightRAG](https://github.com/HKUDS/LightRAG) · [nano-graphrag](https://github.com/gusye1234/nano-graphrag) · [Milvus](https://github.com/milvus-io/milvus) · [Weaviate](https://github.com/weaviate/weaviate) · [Chroma](https://github.com/chroma-core/chroma)
 - Browser & computer use: [Scrapeless](https://github.com/scrapeless-ai) · [browser-use](https://github.com/browser-use/browser-use) · [Skyvern](https://github.com/Skyvern-AI/skyvern) · [Open-AutoGLM](https://github.com/zai-org/Open-AutoGLM) · [Crawlee](https://github.com/apify/crawlee) · [Browserless](https://github.com/browserless/browserless) · [AgentQL](https://github.com/tinyfish-io/agentql)
-- Runtimes, sandboxes & gateways: [Daytona](https://github.com/daytonaio/daytona) · [E2B](https://github.com/e2b-dev/E2B) · [SandBase Harness](https://github.com/sandbaseai/sandbase-harness) · [Bifrost](https://github.com/maximhq/bifrost) · [goose](https://github.com/block/goose) · [agentgateway](https://github.com/agentgateway/agentgateway)
+- Runtimes, sandboxes & gateways: [Daytona](https://github.com/daytonaio/daytona) · [E2B](https://github.com/e2b-dev/E2B) · [SandBase Harness](https://github.com/sandbaseai/sandbase-harness) · [Bifrost](https://github.com/maximhq/bifrost) · [YYLO](https://github.com/yylo-dev/yylo) · [goose](https://github.com/block/goose) · [agentgateway](https://github.com/agentgateway/agentgateway)
 - Observability & evals: [Langfuse](https://github.com/langfuse/langfuse) · [Phoenix](https://github.com/Arize-ai/phoenix) · [AgentOps](https://github.com/AgentOps-AI/agentops) · [OpenTelemetry GenAI conventions](https://github.com/open-telemetry/semantic-conventions-genai)
 - Visual / low-code platforms: [n8n](https://github.com/n8n-io/n8n) · [Coze Studio](https://github.com/coze-dev/coze-studio) · [Dify](https://github.com/langgenius/dify) · [FastGPT](https://github.com/labring/FastGPT) · [BISHENG](https://github.com/dataelement/bisheng)
 - Historical / archived / maintenance-mode: [AutoGPT](https://github.com/Significant-Gravitas/AutoGPT) · [AutoGen](https://github.com/microsoft/autogen) · [Semantic Kernel](https://github.com/microsoft/semantic-kernel) · [Magentic-One](https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one) · [npi](https://github.com/sheet0/npi) · [agent-protocol](https://github.com/agi-inc/agent-protocol) · [Agora Protocol](https://github.com/agora-protocol/paper-demo) · [naptha-sdk](https://github.com/NapthaAI/naptha-sdk)
@@ -531,6 +531,12 @@ GitHub repository: [https://github.com/sandbaseai/sandbase-harness](https://gith
 Go-native, OpenAI-compatible AI gateway for routing requests across multiple model providers with load balancing, automatic failover, guardrails, MCP gateway support, and built-in logs, metrics, and tracing.
 
 GitHub repository: [https://github.com/maximhq/bifrost](https://github.com/maximhq/bifrost)
+
+### YYLO
+
+YYLO is a command-line orchestrator for coding agents: typed task lifecycle with per-task branch/worktree isolation, validation and preflight gates, and a risk-based merge queue with sequential review, keeping repository changes receipt-backed under human merge authority. Published on npm as @yylo/cli.
+
+GitHub repository: [https://github.com/yylo-dev/yylo](https://github.com/yylo-dev/yylo)
 
 # 13. Observability & evals
 

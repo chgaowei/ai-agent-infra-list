@@ -59,7 +59,7 @@ ANP 是开放互联网上的身份与发现层；A2A 是任务/运行时协作�
 - 多智能体：[CrewAI](https://github.com/crewAIInc/crewAI) · [CAMEL](https://github.com/camel-ai/camel) · [MetaGPT](https://github.com/FoundationAgents/MetaGPT)（另见 LangGraph / Microsoft Agent Framework）
 - 记忆与 RAG：[mem0](https://github.com/mem0ai/mem0) · [Graphiti](https://github.com/getzep/graphiti) · [Letta](https://github.com/letta-ai/letta) · [RAGFlow](https://github.com/infiniflow/ragflow) · [Cognee](https://github.com/topoteretes/cognee) · [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) · [GraphRAG](https://github.com/microsoft/graphrag) · [fast-graphrag](https://github.com/circlemind-ai/fast-graphrag) · [LightRAG](https://github.com/HKUDS/LightRAG) · [nano-graphrag](https://github.com/gusye1234/nano-graphrag) · [Milvus](https://github.com/milvus-io/milvus) · [Weaviate](https://github.com/weaviate/weaviate) · [Chroma](https://github.com/chroma-core/chroma)
 - 浏览器与计算机使用：[Scrapeless](https://github.com/scrapeless-ai) · [browser-use](https://github.com/browser-use/browser-use) · [Skyvern](https://github.com/Skyvern-AI/skyvern) · [Open-AutoGLM](https://github.com/zai-org/Open-AutoGLM) · [Crawlee](https://github.com/apify/crawlee) · [Browserless](https://github.com/browserless/browserless) · [AgentQL](https://github.com/tinyfish-io/agentql)
-- 运行时、沙箱与网关：[Daytona](https://github.com/daytonaio/daytona) · [E2B](https://github.com/e2b-dev/E2B) · [SandBase Harness](https://github.com/sandbaseai/sandbase-harness) · [Bifrost](https://github.com/maximhq/bifrost) · [goose](https://github.com/block/goose) · [agentgateway](https://github.com/agentgateway/agentgateway)
+- 运行时、沙箱与网关：[Daytona](https://github.com/daytonaio/daytona) · [E2B](https://github.com/e2b-dev/E2B) · [SandBase Harness](https://github.com/sandbaseai/sandbase-harness) · [Bifrost](https://github.com/maximhq/bifrost) · [YYLO](https://github.com/yylo-dev/yylo) · [goose](https://github.com/block/goose) · [agentgateway](https://github.com/agentgateway/agentgateway)
 - 可观测性与评测：[Langfuse](https://github.com/langfuse/langfuse) · [Phoenix](https://github.com/Arize-ai/phoenix) · [AgentOps](https://github.com/AgentOps-AI/agentops) · [OpenTelemetry GenAI conventions](https://github.com/open-telemetry/semantic-conventions-genai)
 - 可视化 / 低代码平台：[n8n](https://github.com/n8n-io/n8n) · [Coze Studio](https://github.com/coze-dev/coze-studio) · [Dify](https://github.com/langgenius/dify) · [FastGPT](https://github.com/labring/FastGPT) · [BISHENG](https://github.com/dataelement/bisheng)
 - 历史 / 归档 / 维护模式：[AutoGPT](https://github.com/Significant-Gravitas/AutoGPT) · [AutoGen](https://github.com/microsoft/autogen) · [Semantic Kernel](https://github.com/microsoft/semantic-kernel) · [Magentic-One](https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one) · [npi](https://github.com/sheet0/npi) · [agent-protocol](https://github.com/agi-inc/agent-protocol) · [Agora Protocol](https://github.com/agora-protocol/paper-demo) · [naptha-sdk](https://github.com/NapthaAI/naptha-sdk)
@@ -531,6 +531,12 @@ github 地址：[https://github.com/sandbaseai/sandbase-harness](https://github.
 Bifrost 是一个基于 Go 构建、兼容 OpenAI API 的 AI 网关，通过负载均衡和自动故障转移在多个模型提供商之间路由请求，并提供 guardrails、MCP 网关支持以及内置日志、指标和链路追踪。
 
 github 地址：[https://github.com/maximhq/bifrost](https://github.com/maximhq/bifrost)
+
+### YYLO
+
+YYLO 是一个面向编程智能体的命令行编排器：类型化任务生命周期、按任务隔离的分支/worktree、校验与 preflight 门禁，以及带顺序评审的风险分级合并队列，仓库变更保留回执并始终处于人工合并权限之下。以 npm 包 @yylo/cli 发布。
+
+github 地址：[https://github.com/yylo-dev/yylo](https://github.com/yylo-dev/yylo)
 
 # 13. 可观测性与评测
 
