@@ -54,7 +54,7 @@ Classification is a snapshot of 2026. Projects may fit more than one bucket; we 
 - Agent-to-tool / MCP: [MCP spec](https://github.com/modelcontextprotocol/modelcontextprotocol) · [servers](https://github.com/modelcontextprotocol/servers) · [registry](https://registry.modelcontextprotocol.io) · [goose](https://github.com/block/goose) · [AGENTS.md](https://github.com/agentsmd/agents.md) · [agentgateway](https://github.com/agentgateway/agentgateway)
 - Agent-to-user / UI: [AG-UI](https://github.com/ag-ui-protocol/ag-ui) · [A2UI](https://a2ui.org)
 - Agent-to-client / IDE: [Zed ACP](https://github.com/zed-industries/agent-client-protocol)
-- Commerce & payments: [AP2](https://github.com/google-agentic-commerce/AP2) · [Agentic Commerce Protocol](https://github.com/agentic-commerce-protocol/agentic-commerce-protocol)
+- Commerce & payments: [AP2](https://github.com/google-agentic-commerce/AP2) · [Agentic Commerce Protocol](https://github.com/agentic-commerce-protocol/agentic-commerce-protocol) · [x402](https://github.com/x402-foundation/x402)
 - Frameworks & orchestration: [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) · [Google ADK](https://github.com/google/adk-python) · [Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-python) · [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) · [LangGraph](https://github.com/langchain-ai/langgraph) · [LangChain](https://github.com/langchain-ai/langchain) · [LlamaIndex](https://github.com/run-llama/llama_index) · [Agno](https://github.com/agno-agi/agno) · [Pydantic AI](https://github.com/pydantic/pydantic-ai) · [Mastra](https://github.com/mastra-ai/mastra) · [Qwen-Agent](https://github.com/QwenLM/Qwen-Agent) · [Strands](https://github.com/strands-agents/sdk-python) · [Haystack](https://github.com/deepset-ai/haystack) · [DSPy](https://github.com/stanfordnlp/dspy) · [Inngest](https://github.com/inngest/inngest) · [Prefect](https://github.com/PrefectHQ/prefect) · [TEN-Agent](https://github.com/TEN-framework/ten-framework) · [AgentStack](https://github.com/agentstack-ai/AgentStack)
 - Multi-agent: [CrewAI](https://github.com/crewAIInc/crewAI) · [CAMEL](https://github.com/camel-ai/camel) · [MetaGPT](https://github.com/FoundationAgents/MetaGPT) (also LangGraph / Microsoft Agent Framework)
 - Memory & RAG: [mem0](https://github.com/mem0ai/mem0) · [Graphiti](https://github.com/getzep/graphiti) · [Letta](https://github.com/letta-ai/letta) · [RAGFlow](https://github.com/infiniflow/ragflow) · [Cognee](https://github.com/topoteretes/cognee) · [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) · [GraphRAG](https://github.com/microsoft/graphrag) · [fast-graphrag](https://github.com/circlemind-ai/fast-graphrag) · [LightRAG](https://github.com/HKUDS/LightRAG) · [nano-graphrag](https://github.com/gusye1234/nano-graphrag) · [Milvus](https://github.com/milvus-io/milvus) · [Weaviate](https://github.com/weaviate/weaviate) · [Chroma](https://github.com/chroma-core/chroma)
@@ -243,6 +243,12 @@ Open standard (also abbreviated **ACP**) for connecting buyers, their agents, an
 
 GitHub repository: [https://github.com/agentic-commerce-protocol/agentic-commerce-protocol](https://github.com/agentic-commerce-protocol/agentic-commerce-protocol)
 
+### x402 (settlement rail for agent payments)
+
+The agent-payment settlement protocol: a merchant returns HTTP 402 Payment Required with a `PAYMENT-REQUIRED` header declaring the asset, amount and payee; the agent pays and retries. Settlement-rail agnostic — any asset the counterparty accepts. A feeless, instant self-custodied rail that works with x402 is **Nano (XNO)**, a peer-to-peer layer-1 with no issuer that cannot freeze funds, via the exact scheme on `nano:mainnet`.
+
+Spec: [https://github.com/x402-foundation/x402](https://github.com/x402-foundation/x402)
+GitHub repository: [https://github.com/PANDeveloper001/openai-agents-nano-x402](https://github.com/PANDeveloper001/openai-agents-nano-x402) (OpenAI Agents SDK payer for x402)
 
 # 8. Frameworks & orchestration
 
